@@ -628,9 +628,138 @@ eg. 패키지 내부, 클래스 내부, 함수 내부
 ### 타입추론을 이용한 람다함수 축약
 `val c: (String)->Unit = { str -> println("$str 람다함수") }` ----> `val c = { str:String -> println("$str 람다함수") }`
 
+### 람다함수의 특별한 케이스들
+* 람다함수도 여러 구문의 사용이 가능 -> **마지막 구문의 결과값** 이 '반환'됨
+    val a: (Int, Int)->Int = { a,b ->
+        println("여러줄")
+        println("쌉가능")
+        a+b }
+        
+* 패러미터가 없는 람다함수는 실행할 구문들만 나열하면 됨
+    val a = {println("패러미터가 없듬")}
+* 패러미터가 하나뿐이라면 `it` 사용
+    val a: (String)->Unit = {"$it 발테리 잇츠 제임스"}
+
 
 ***
 
-
-
 # [스코프함수]
+> _함수형 언어의 특징을 좀 더 편리하게 사용할 수 있도록 기본 제공하는 함수들_
+> _main함수와 '별도의 scope'에서 인스턴스의 변수와 함수를 조작하므로 코드가 깔끔해지는 장점_
+
+?클래스에서 생성한 인스턴스를 스코프 함수에 전달하면 인스턴스의 속성이나 함수를 스코프 함수 내에서 더 편하게 사용할 수 있도록 하는 기능?
+
+인스턴스의 속성이나 함수를 scope 내에서 깔끔하게 분리하여 사용할 수 있다는 점 때문에 코드의 가독성을 향상시킨다는 장점
+
+* apply
+* run
+* with
+* also
+* let
+
+### apply
+> 인스턴스를 생성한 후 변수에 담기 전에 '초기화 과정'을 수행할 때 많이 사용
+> '인스턴스 자신'을 다시 반환
+
+    fun main() {
+        var a = Book("물먹는법특강", 30000).apply{
+            name = "[초한정판]" + name
+            discount()
+        }
+    }
+
+    class Book(var name:String, var price:Int){
+        fun discount(){
+        price -= 2000
+        }
+    }
+    
+람다함수 형식으로 참조연산자 없이 바로 사용
+
+인스턴스 자신을 다시 반환하므로 생성되자마자 조작된 인스턴스를 변수에 바로 넣어줄 수 있다.
+
+### run
+> 이미 인스턴스가 만들어진 후에 인스턴스의 함수나 속성을 스코프 내에서 사용할 때 유용
+> '마지막 구문'을 반환
+
+    var b = a.run{
+        println(a.prince)
+        a.name
+    }
+-----------------------------------------------------
+
+    fun main() {
+        var a = Book("물먹는법특강", 30000).apply{
+            name = "[초한정판]" + name
+            discount()
+        }
+        
+        a.run{
+            println("상품명 : ${name}, 가격 : ${price} 원")
+        }
+    }
+
+    class Book(var name:String, var price:Int){
+        fun discount(){
+        price -= 2000
+        }
+    }
+    
+### with
+> run과 동일한 기능, 단지 인스턴스를 참조연산자 대신 '패러미터'로 받는다는 차이
+
+`a.run{...}` -> `with(a){...}`
+
+
+### also 와 let
+apply/also 는 처리가 끝나면 '인스턴스'를 반환
+
+run/let 은 처리가 끝나면 최종값을 반환
+
+apply, run 과의 차이점으로는 **also** , **let** 은 마치 패러미터로 인스턴스를 넘긴것처럼 `it`을 통해서 인스턴스를 사용할 수 있다.
+
+**이유** : 같은 이름의 변수나 함수가 **'scope 바깥에 중복'**  되어 있는 경우에 혼란을 방지하기 위함
+
+    fun main() {
+        var price = 5000
+    
+        var a = Book("물먹는법특강", 30000).apply{
+            name = "[초한정판]" + name
+            discount()
+        }
+        
+        a.run{
+            println("상품명 : ${name}, 가격 : ${price} 원")
+        }
+    }
+
+    class Book(var name:String, var price:Int){
+        fun discount(){
+        price -= 2000
+        }
+    }
+
+-> `상품명 : [초한정판]물먹는법특강, 5000 원` **price라는 변수가 중복!**
+
+
+    fun main() {
+        var price = 5000
+    
+        var a = Book("물먹는법특강", 30000).apply{
+            name = "[초한정판]" + name
+            discount()
+        }
+        
+        a.let{
+            println("상품명 : ${it.name}, 가격 : ${it.price} 원")
+        }
+    }
+
+    class Book(var name:String, var price:Int){
+        fun discount(){
+        price -= 2000
+        }
+    }
+    
+-> `상품명 : [초한정판]물먹는법특강, 28000 원`
+
