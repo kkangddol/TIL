@@ -879,7 +879,7 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
     }
     
     class EventPrinter: EventListener{
-        override onEvent(count: Int){
+        override fun onEvent(count: Int){
             print("${count}-")
         }
         
