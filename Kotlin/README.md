@@ -888,6 +888,7 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
         //이를 객체지향의 다형성이라고 함
             val counter = Counter(this) 
             counter.count()
+        }
     }
     
 ## 익명객체
