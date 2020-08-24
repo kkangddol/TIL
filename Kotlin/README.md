@@ -274,6 +274,32 @@ _다른 언어에서의 switch case_
 * `||` : or 연산자
 * `!` : not 연산자
 
+## 비트연산자
+
+* `and` : and 연산자 (자바에서 & 연산자)
+* `or` : or 연산자 (자바에서 | 연산자)
+* `xor` : xor 연산자 (자바에서 ^ 연산자)
+* `inv` : not 연산자 (자바에서 ~ 연산자)
+* `sh1` : 왼쪽 쉬프트 연산자 (자바에서 << 연산자)
+* `shr` : 오른쪽 쉬프트 연산자 (자바에서 >> 연산자)
+* `ushr` : 부호비트 포함 오른쪽 쉬프트 연산자 (자바에서 >>> 연산자)
+
+
+    ddshl - signed shift left (equivalent of << operator) 
+    shr - signed shift right (equivalent of >> operator)
+    ushr- unsigned shift right (equivalent of >>> operator)
+    and - bitwise and (equivalent of & operator)
+    or - bitwise or (equivalent of | operator)
+    xor - bitwise xor (equivalent of ^ operator)
+    inv - bitwise complement (equivalent of ~ operator)
+
+    1 shl 2 // Equivalent to 1.shl(2), 출력 = 4
+    16 shr 2 // 출력 = 4
+    2 and 4 // 출력 = 0
+    2 or 3 // 출력 = 3
+    4 xor 5 // 출력 = 1
+    4.inv() // 출력 = -5
+
 
 ***
 
@@ -304,7 +330,7 @@ _다른 언어에서의 switch case_
 
 `var personA = Person("강석원", 1995)` -> 인스턴스 생성
 
-`Person.introduce()` -> 이것과 같이 인스턴스를 변수에 담지 않고도 바로 사용할 수도 있다.
+`Person("강석원", 1995).introduce()` -> 이것과 같이 인스턴스를 변수에 담지 않고도 바로 사용할 수도 있다.
 
 
 ### 참조연산자
@@ -538,7 +564,7 @@ eg. 패키지 내부, 클래스 내부, 함수 내부
 ### 스코프에 대한 세가지 규칙
 1. 스코프 외부에서는 스코프 내부의 멤버를 '참조연산자'로만 참조가 가능하다 (eg. dogA.eat())
 2. 동일 스코프 내에서는 멤버들을 '공유'할 수 있다
-3. 하위 스코프에서는 상위 스코프의 멤버를 재정의 할 수 있다
+3. 하위 스코프에서는 상위 스코프의 멤버를 재정의 할 수 있다 -> 작은 스코프에서 동일한 이름의 멤버가 나오면 `name shadowed` 경고가 뜨며 작은 스코프에 지정된 변수가 
 
     val str = "패키지 스코프"
     
@@ -923,7 +949,9 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
             counter.count()
         }
     }
-    
+
+
+참고로 위의 익명객체에서 오버라이드 해야할 함수가 하나면 좀더 간단하게 구현 가능 -> **람다함수** 이용
     
 ***
 
