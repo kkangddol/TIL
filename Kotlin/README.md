@@ -939,14 +939,14 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
 
 ### Down-Casting 연산자
 
-* as : '변수'를 호환되는 자료형으로 변환해주는 캐스팅 연산자
+* `as` : '변수'를 호환되는 자료형으로 변환해주는 캐스팅 연산자
     var a: Drink = Coke()
     a as Coke // 즉시 자료형 변환
 
     var a: Dring = Coke()
     var b = a as Coke // 변환된 결과를 반환해주고 **a 변수 자체도 다운캐스팅** 됨
 
-* is : 변수가 자료형에 호환되는지를 먼저 **'체크한 후 변환'** 해주는 캐스팅 연산자. 조건문에서 사용하며 그 **조건문 내에서만** 캐스팅
+* `is` : 변수가 자료형에 호환되는지를 먼저 **'체크한 후 변환'** 해주는 캐스팅 연산자. 조건문에서 사용하며 그 **조건문 내에서만** 캐스팅
     var a: Drink = Coke()
     if(a is Coke){
         // **이 안에서만 a가 Coke가 됨**
@@ -1064,17 +1064,17 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
 
 ### 리스트를 생성하는 방법
 전용함수 사용   
-* listOf(1,2,3)
-* mutableListOf("A","B","C")
+* `listOf(1,2,3)`
+* `mutableListOf("A","B","C")`
 
 ### MutableList의 함수
-* add(데이터)
-* add(인덱스, 데이터)
-* remove(데이터)
-* removeAt(인덱스)
-* shuffle()
-* sort()
-* list[인덱스] = 데이터
+* `add(데이터)`
+* `add(인덱스, 데이터)`
+* `remove(데이터)`
+* `removeAt(인덱스)`
+* `shuffle()`
+* `sort()`
+* `list[인덱스] = 데이터`
 
 
 ***
@@ -1085,17 +1085,17 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
 > _그 중 자주쓰이는것 설명_
 
 ### 주로 사용하는 속성과 함수
-* length : Int 타입의 길이 속성
-* toLowerCase() : 영문 소문자로 문자열 전체 변환하여 반환 -> 해당 문자열에 바로 적용되는 것은 아님
-* toUpperCase() : 영문 대문자로 문자열 전체 변환하여 반환 -> 해당 문자열에 바로 적용되는 것은 아님
-* split("delimiter") : delimiter를 기준으로 문자열을 나누어 문자열 배열로 반환 -> **자바와 달리 split에 정규식이 아닌 일반 문자열을 넣어도 동작**
-* joinToString() : 문자열 배열을 합쳐서 반환함? -> 정확히 어떤걸 합쳐서 문자열로 반환한다는거지?
-* joinToString("문자열") : 지정한 문자열을 사이에 넣어서 합쳐서 반환함? -> 얘도마찬가지
-* substring(5..10) : for문에서 사용했었던 **IntRange** 형식을 사용하여 시작과 끝을 정해주어 그 부분만 반환
+* `length` : 문자열의 길이 속성(Int 타입)
+* `toLowerCase()` : 영문 소문자로 문자열 전체 변환하여 반환 -> 해당 문자열에 바로 적용되는 것은 아님
+* `toUpperCase()` : 영문 대문자로 문자열 전체 변환하여 반환 -> 해당 문자열에 바로 적용되는 것은 아님
+* `split("delimiter")` : delimiter를 기준으로 문자열을 나누어 문자열 배열로 반환 -> **자바와 달리 split에 정규식이 아닌 일반 문자열을 넣어도 동작**
+* `joinToString()` : 문자열 배열을 합쳐서 반환함? -> 정확히 어떤걸 합쳐서 문자열로 반환한다는거지?
+* `joinToString("문자열")` : 지정한 문자열을 사이에 넣어서 합쳐서 반환함? -> 얘도마찬가지
+* `substring(5..10)` : for문에서 사용했었던 **IntRange** 형식을 사용하여 시작과 끝을 정해주어 그 부분만 반환
 
 ### 문자열이 비어있는지 여부를 판단하여 boolean 값으로 반환받는 함수
-* isNullOrEmpty() : null 이거나 empty면 true를 반환 -> null 이거나 아예 비어야함
-* isNullOrBlank() : null 이거나 blank면 true를 반환 -> null 이거나 공백문자만 있어아햠 (Space, Tab, Line Feed, Carrige Return 등등)
+* `isNullOrEmpty()` : null 이거나 empty면 true를 반환 -> null 이거나 아예 비어야함
+* `isNullOrBlank()` : null 이거나 blank면 true를 반환 -> null 이거나 공백문자만 있어아햠 (Space, Tab, Line Feed, Carrige Return 등등)
 
     fun main() {
         val nullString: String? = null
@@ -1105,9 +1105,9 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
     }
 
 ### 특수한 함수들
-* startsWith("문자열") : 지정한 문자열로 시작하면 true를 반환
-* endsWith("문자열") : 지정한 문자열로 끝나면 true를 반환
-* contains("문자열") : 지정한 문자열을 포함하면 true를 반환
+* `startsWith("문자열")` : 지정한 문자열로 시작하면 true를 반환
+* `endsWith("문자열")` : 지정한 문자열로 끝나면 true를 반환
+* `contains("문자열")` : 지정한 문자열을 포함하면 true를 반환
 
 
 ***
@@ -1117,4 +1117,61 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
 > _nullable 변수에서 null을 처리하는 법과_   
 > _변수 간에 동일성을 확인하는 법_
 
-null 상태로 속성이나 함수를 쓰려고 하면 null pointer exception이 발생하기 때문에 nullable 변수를 사용할 때에는 null check 없이는 코드가 컴파일되지 않는다.
+## null 처리
+null 상태로 속성이나 함수를 쓰려고 하면 null pointer exception이 발생하기 때문에 nullable 변수를 사용할 때에는 null check 없이는 코드가 컴파일되지 않는다.   
+null check를 하기위해 일일히 if문으로 조건을 체크하는 대신 다른 방법을 사용.
+
+* `?.` : null safe operator
+* `?:` : elvis operator
+* `!!.` : non-null assertion operator
+
+### null safe 연산자
+참조연산자를 실행하기 전에 먼저 객체가 null인지 확인부터하고 객체가 null 이라면 **뒤따라오는 구문을 실행하지 않는** 연산자   
+`sample?.toUpperCase()` -> sample이 null이라면 toUpperCase()는 실행되지 않는다
+
+### elvis 연산자
+객체가 null이 아니라면 그대로 사용하지만 null 이라면 **연산자 우측의 객체로 대체** 되는 연산자   
+`sample?:"default"` -> sample이 null이라면 대신 "default" 문자열을 사용
+
+### non-null assertion 연산자
+참조연산자를 사용할 때 null 여부를 컴파일 시 확인하지 않도록 하여 **런타임 시 null pointer exception이 나도록 의도적으로 방치** 하는 연산자
+
+### 예제
+    fun main(){
+        var a: String? = null
+        println(a?.toUpperCase())
+        println(a?:"default".toUpperCase())
+        println(a!!.toUpperCase())
+    }
+->   
+`null`   
+`DEFAULT`   
+`null pointer exception`
+
+### 스코프 함수와 함께 사용하면 더욱 편리
+**!null을 체크하기 위해 if문 대신 사용하면 더욱 편리!**
+
+    fun main(){
+        var a: String? = null
+        var b: String? = "BaBo"
+        a?.run{
+            println(toUpperCase())
+            println(toLowerCase())
+        }
+        b?.run{
+            println(toUpperCase())
+            println(toLowerCase())
+        }
+    }
+    
+## 변수의 동일성 체크
+
+* **내용의 동일성** : 메모리상에 서로 다른곳에 할당된 객체라도 **그 내용이 같다면 동일** 하다고 판단하는 것
+* **객체의 동일성** : 서로 다른 변수가 **메모리상에 같은 객체를 가르킬때만 동일** 하다고 판단하는 것
+
+내용의 동일성을 판단하는 연산자 `==`   
+객체의 동일성을 판단하는 연산자 `===`
+
+!'내용의 동일성'은 자동으로 판단되는 것이 아닌 코틀린의 모든 클래스가 내부적으로 상속받는 'Any' 라는 최상위 클래스의 `equals()` 함수가 반환하는 Boolean 값으로 판단!
+
+기본 자료형에는 자료형의 특징에 따라 equals() 함수가 이미 구현되어 있지만
