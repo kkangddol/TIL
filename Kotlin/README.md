@@ -1174,4 +1174,38 @@ null check를 하기위해 일일히 if문으로 조건을 체크하는 대신 �
 
 !'내용의 동일성'은 자동으로 판단되는 것이 아닌 코틀린의 모든 클래스가 내부적으로 상속받는 'Any' 라는 최상위 클래스의 `equals()` 함수가 반환하는 Boolean 값으로 판단!
 
-기본 자료형에는 자료형의 특징에 따라 equals() 함수가 이미 구현되어 있지만
+기본 자료형에는 자료형의 특징에 따라 equals() 함수가 이미 구현되어 있지만 커스텀 class를 만들때는 `open fun equals(other: Any?):Boolean` equals 함수를 상속받아   
+동일성을 확인해주는 구문을 **별도로 구현해야 함**
+
+### 예제
+    fun main(){
+        var a = Product("코카콜라", 1000)
+        var b = Product("코카콜라", 1000)
+        var c = a
+        var d = Product("펩시", 990)
+        
+        println(a == b)
+        println(a === b)
+        
+        println(a == c)
+        println(a === c)
+        
+        println(a == d)
+        println(a === d)
+    }
+    
+    class Product(val name: String, val price: Int){
+        override fun equals(other: Any?): Boolean{
+            if(other is Product){
+                return other.name == name && other.price == price
+            } else {
+                return false
+            }
+        }
+    }
+    
+    
+***
+
+# [함수의 다양한 기능]
+> 함수의 argument를 다루는 방법과 infix 함수
