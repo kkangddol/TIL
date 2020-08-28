@@ -1081,3 +1081,40 @@ _리스너를 통해 이벤트를 반환하는 함수 이름은 관례적으로 
 
 
 # [문자열을 다루는 법]
+> _String 클래스와 관련된 여러 속성과 함수_   
+> _그 중 자주쓰이는것 설명_
+
+### 주로 사용하는 속성과 함수
+* length : Int 타입의 길이 속성
+* toLowerCase() : 영문 소문자로 문자열 전체 변환하여 반환 -> 해당 문자열에 바로 적용되는 것은 아님
+* toUpperCase() : 영문 대문자로 문자열 전체 변환하여 반환 -> 해당 문자열에 바로 적용되는 것은 아님
+* split("delimiter") : delimiter를 기준으로 문자열을 나누어 문자열 배열로 반환 -> **자바와 달리 split에 정규식이 아닌 일반 문자열을 넣어도 동작**
+* joinToString() : 문자열 배열을 합쳐서 반환함? -> 정확히 어떤걸 합쳐서 문자열로 반환한다는거지?
+* joinToString("문자열") : 지정한 문자열을 사이에 넣어서 합쳐서 반환함? -> 얘도마찬가지
+* substring(5..10) : for문에서 사용했었던 **IntRange** 형식을 사용하여 시작과 끝을 정해주어 그 부분만 반환
+
+### 문자열이 비어있는지 여부를 판단하여 boolean 값으로 반환받는 함수
+* isNullOrEmpty() : null 이거나 empty면 true를 반환 -> null 이거나 아예 비어야함
+* isNullOrBlank() : null 이거나 blank면 true를 반환 -> null 이거나 공백문자만 있어아햠 (Space, Tab, Line Feed, Carrige Return 등등)
+
+    fun main() {
+        val nullString: String? = null
+        val emptyString = ""
+        val balnkString = " "
+        val normalString = "A"
+    }
+
+### 특수한 함수들
+* startsWith("문자열") : 지정한 문자열로 시작하면 true를 반환
+* endsWith("문자열") : 지정한 문자열로 끝나면 true를 반환
+* contains("문자열") : 지정한 문자열을 포함하면 true를 반환
+
+
+***
+
+
+# [null 처리와 동일성의 확인]
+> _nullable 변수에서 null을 처리하는 법과_   
+> _변수 간에 동일성을 확인하는 법_
+
+null 상태로 속성이나 함수를 쓰려고 하면 null pointer exception이 발생하기 때문에 nullable 변수를 사용할 때에는 null check 없이는 코드가 컴파일되지 않는다.
