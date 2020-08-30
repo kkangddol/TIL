@@ -1213,3 +1213,55 @@ non-null 타입의 패러미터를 요구하는 함수에 넘겨주려는 데이
 
 # [함수의 다양한 기능]
 > 함수의 argument를 다루는 방법과 infix 함수
+
+## overloading
+> _'같은 Scope 안'에서 같은 이름의 함수를 여러개 만들 수 있는 기능_   
+> _함수의 이름이 같더라도 패러미터의 자료형이 다르거나 개수가 다르다면 서로 다른 함수로 동작_   
+> _(패러미터의 이름만 다르고 자료형의 갯수나 타입이 동일하면 안됨)_
+
+## default arguments
+> _패러미터를 받아야 하는 함수지만 별다른 패러미터가 없더라도 기본값으로 동작할 수 있게해줌_
+
+`deliveryItem(name: String, count: Int=1, destination: String = "집"){}`
+
+## named arguments
+> _위의 예제에서 이름과 목적지만 넣고 갯수는 기본값을 이용하고싶을때_   
+> _패러미터의 순서와 관계없이 패러미터의 이름을 사용하여 직접 패러미터의 값을 할당하는 기능_
+
+`deliveryItem("선물", destination = "친구집")`
+
+## variable number of arguments (vararg)
+> _같은 자료형을 개수 상관없이 패러미터로 받고 싶을 때 사용하는 기능_   
+> _마치 배열처럼 참조할 수 있다_   
+> **!개수가 지정되지 않은 패러미터라는 특징 때문에 다른 패러미터와 같이 쓸때는 반드시 맨 마지막에 위치!**
+
+    fun main(){
+        sum(1,2,3,4)
+    }
+
+    fun sum(vararg numbers: Int){
+        var sum = 0
+        for(n in numbers){
+            sum += n
+        }
+        print(sum)    
+    }
+    
+## infix function 설명이 매우 부족 설명이 매우 부족 설명이 매우 부족 설명이 매우 부족
+> _마치 연산자처럼 쓸수있는 함수? 설명이 매우 부족_
+
+    fun main(){
+        println(6 multiply 4)
+        println(6.multiply(4))
+    }
+
+    infix fun Int.multiply(x: Int): Int = this * x
+    
+class 내에서 infix함수를 선언할 때에는 적용할 클래스가 자기 자신이므로 클래스 이름은 쓰지 않는다   
+e.g. : `infix fun multiply(x: Int): Int = this * x`
+
+
+***
+
+
+# [중첩클래스와 내부클래스]
