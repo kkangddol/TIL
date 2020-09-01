@@ -1265,9 +1265,131 @@ e.g. : `infix fun multiply(x: Int): Int = this * x`
 
 
 # [중첩클래스와 내부클래스]
-> _클래스 안에 클래스가 중첩되는 두 가지 유형의 클래스_
+> _클래스 안에 클래스가 중첩되는 두 가지 유형의 클래스_   
+> _클래스간의 연계성을 표현하여 코드의 가독성 및 작성 편의성이 올라간다..?_
 
+## 중첩클래스(Nested Class)
+> _하나의 클래스가 다른 클래스의 기능과 강하게 연관되어 있다는 의미를 전달하기 위해 만들어진 형식_   
+> _코드의 형태만 내부에 존재할 뿐 실질적으로는 서로 내용을 직접 공유할 수 없는 별개의 클래스_
 
-## 중첩클래스
+    class Outer{
+        class Nested{
+        }
+    }
+    
+사용할 때는 외부클래스이름.중첩클래스이름 `Outer.Nested()`   
+이때 중첩클래스 대신 내부클래스라는 것을 사용할 수 있다.
 
 ## 내부클래스
+> _혼자서 객체를 만들 수는 없고 외부 클래스의 객체가 있어야만 생성과 사용이 가능한 클래스_   
+> _외부클래스 객체 안에서 사용되는 클래스 이므로 외부 클래스의 속성과 함수의 사용이 가능_
+
+    class Outer{
+        var text = "Outer Class"
+        inner class Inner{
+            var text = "Inner Class"
+            fun introOuter(){
+                println(this@Outer.text)    //외부클래스와 내부클래스에 같은 이름의 속성이나 함수가 있다면 외부클래스의 속성,함수는 'this@OuterClass이름' 으로 참조
+            }
+        }
+    }
+
+
+***
+
+
+# [특별한 유형의 클래스]
+> _Data Class 와 Enum Class_
+
+## Data Class
+> _데이터를 다루는 데에 최적화된 class_   
+> _5가지 기능을 내부적으로 자동으로 생성_
+
+**사용자가 직접 호출하기 위한 함수가 아닌 배열이나 리스트 등의 데이터 클래스에 객체가 담겨있을때 이 내용을 자동으로 꺼내 쓸 수 있는 기능을 지원하기 위한 함수들**
+
+1. `equals()` : 내용의 동일성을 판단하는
+2. `hashcode()` : 객체의 내용에서 고유한 코드를 생성하는
+3. `toString()` : 포함된 속성을 보기쉽게 나타내는
+4. `copy()` : 객체를 복사하여 똑같은 내용의 새 객체를 만드는
+    똑같은 내용의 객체를 생성할 수 있지만 패러미터를 줘 일부 속성을 변경할 수도 있다.
+    val a = Data("A",7)
+    val b = a.copy()
+    val c = a.copy("B")
+5. `componentX()` : 속성을 순서대로 반환하는
+    Data("A", 7) 에서 "A"가 component1(), 7이 component2()
+
+### 예제
+    fun main(){
+        val a = General("A",1)
+        println(a == General("A",1)
+        println(a.hashcode())
+        println(a)
+        
+        val b = Data("B",2)
+        println(b == Data("B",2))
+        println(b.hashcode())
+        println(b)
+        
+        println(b.copy())
+        println(b.copy("C"))
+        println(b.copy(3))
+    }
+    class General(val name: String, val id: Int)
+    data class Data(val name: String, val id: Int)
+
+
+**for문의 내부적으로는 a에 component1(), b에 component2() 함수를 사용해 순서대로 값을 불러옴**
+
+    fun main(){
+        val list = listOf(Data("A",1),
+                        Data("B",2),
+                        Data("C",3))
+        for((a,b) in list){    // 내부적으로는 a에는 component1()이 b에는 component2()라는 함수를 사용하여 순서대로 값을 불러옴
+            println("${a}, ${b}")
+        }
+    }
+    class General(val name: String, val id: Int)
+    data class Data(val name: String, val id: Int)
+
+## Enum Class (enumerated type : 열거형)
+> _enum class 내에 상태를 구분하기 위한 객체들을 이름을 붙여 여러개 생성해두고_   
+> _그 중 하나의 상태를 선택하여 나타내기 위한 클래스_
+
+enum class 내의 객체들은 관행적으로 대문자로 기술 (e.g. Color.RED)   
+enum의 객체들은 고유한 속성을 가질 수 있음   
+일반 클래스처럼 함수도 추가할 수 있음 (객체의 선언이 끝나는 위치에 세미콜론을 추가한 후 함수를 추가하면 됨)
+
+    enum class Color(val number: Int){
+        RED(1),
+        BLUE(2),
+        GREEN(3);
+        
+        fun isRed() = this == Color.Red
+    }
+
+### 예제
+
+    fun main(){
+        var state = State.SING    //enum은 선언시에 만든 객체를 이름으로 참조하여 그대로 사용하게 됨
+        println(state)
+        
+        state = State.SLEEP
+        println(state.isSleeping())
+        
+        state = State.EAT
+        println(state)
+    }
+    
+    enum class State(val message: String){
+        SING("노래함"),
+        EAT("밥먹음"),
+        SLEEP("잠을잠");
+        
+        fun isSleeping() = this == State.SLEEP
+    }
+
+
+***
+
+
+# [컬렉션2 Set과 Map]
