@@ -1392,4 +1392,52 @@ enum의 객체들은 고유한 속성을 가질 수 있음
 ***
 
 
-# [컬렉션2 Set과 Map]
+# [컬렉션 Set과 Map]
+> _Collection 클래스중 List, Set, Map_
+
+## Set
+> _Set은 List와 달리 순서가 정렬되지 않으며 중복이 허용되지 않는 컬렉션 (집합이니까)_   
+> _따라서 인덱스로 위치를 지정하여 객체참조 불가 (대신 contains 사용)_
+
+List와 마찬가지로 객체의 추가 삭제가 가능한지 여부에 따라   
+* Set<out T>
+* MutableSet<T>
+ 
+* `add(데이터)` : 추가
+* `remove(데이터)` : 삭제
+* `contains` 로 객체가 set 안에 있는지 확인
+
+## Map
+> _Key,Value 쌍으로 넣어주는 컬렉션_   
+> _객체의 위치가 아닌 고유한 key를 통해 객체를 참조_
+
+내부적으로는 `MutableMap.MutableEntry` 에 key, value 객체로 담겨져 있음   
+* key : 객체를 찾기위한 값
+* value : key와 연결된 객체
+
+마찬가지로 객체의 추가 삭제가 가능한지 여부에 따라   
+* Map<K, out V>
+* MutableMap<K, V>
+
+* `put(키,값)` : 요소의 추가
+* `remove(키)` : 요소의 삭제
+
+### 예제
+key와 value를 `to`로 이어줌
+
+    fun main(){
+        val a = mutableMapOf("레드벨벳" to "음파음파",
+                            "트와이스" to "FANCY",
+                            "ITZY" to "Not Shy")
+        for(entry in a){
+            println("${a.key} : ${a.value}")    //앞서서 MutableMap.MutableEntry에 key와 value로 있다고 했으므로 이렇게 출력가능
+        }
+        
+        println(a["레드벨벳"])
+    }
+
+
+***
+
+
+# [컬렉션 함수]
