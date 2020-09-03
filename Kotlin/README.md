@@ -1,3 +1,5 @@
+출처 : 디모의 Kotlin 강좌 (https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)
+
 # **[변수와 자료형]**
 > _클래스 이름은 파스칼 표기법 (ClassName)_   
 > _함수나 변수 이름은 카멜 표기법 (functionName)_   
