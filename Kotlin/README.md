@@ -1465,13 +1465,13 @@ first , last 사용할때 조건에 맞는 객체가 없는경우(=컬렉션이 
 * count (람다함수) : `collection.count{it>7}` 조건에 맞는 아이템의 개수 반환
 
 * associateBy : `collection.associateBy{it.name}` 객체에서 key를 추출하여 map으로 변환하는 함수   
-<img src="/image/associateBy.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="associateBy"></img>
+<img src="/Kotlin/image/associateBy.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="associateBy"></img>
 
 * groupBy : `collection.groupBy{it.birthYear}` key가 같은 아이템끼리 배열로 묶어 map으로 만드는 함수   
-<img src="/image/groupBy.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="groupBy"></img>
+<img src="/Kotlin/image/groupBy.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="groupBy"></img>
 
 * partition : `collection.partition{it.birthYear>2002}` 아이템에 조건을 걸어 **두 개의 컬렉션** 으로 나누어 줌   
-<img src="/image/partition.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="partition"></img>   
+<img src="/Kotlin/image/partition.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="partition"></img>   
 **두 컬렉션은 두 객체를 담을 수 있는 'Pair'라는 클래스 객체로 반환되므로 각각의 컬렉션을 'first' , 'second'로 참조하여 사용**   
 **또는 페어를 직접 받아줄 수 있도록 변수이름을 괄호안에 두 개 선언해주면 각각의 변수 이름으로 받을 수 있다**   
 `val(over2002, under2002) = collection.partition{it.birthYear>2002}`
