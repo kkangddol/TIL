@@ -1490,3 +1490,107 @@ first , last 사용할때 조건에 맞는 객체가 없는경우(=컬렉션이 
 
 # [변수의 고급기술]
 
+`var` 은 할당된 객체를 변경 가능   
+`val` 은 할당된 객체를 변경 불가능 **BUT** 객체 내부의 속성은 변경할 수 있으니까 오해말것
+
+## 상수
+> _컴파일 시점에 결정되어 절대 바꿀 수 없는 값_   
+> _의례적으로 대문자와 언더바만 사용함_
+
+`val` 앞에 `const`를 붙여 선언   
+`const val CONST_A = 1`
+
+상수로 선언할 수 있는 자료형은 **기본 자료형** 만 가능 (String 포함)   
+런타임에 생성될 수 있는 일반적인 다른 클래스의 객체들은 담을 수 없음   
+클래스의 속성이나 지역변수등으로는 사용할 수 없음   
+반드시 **companion object 안에** 선언하여 객체의 생성과 관계없이 클래스와 관계된 고정적인 값으로만 사용하게 됨   
+
+변수와의 성능적인 차이로는 변수는 런타임시 객체를 생성하는데 시간이 더 소요됨   
+따라서 늘 고정적으로 사용할 값은 상수를 통해 객체의 생성없이 메모리에 값을 고정하여 사용
+
+### 예제
+    fun main(){
+        foodCourt().searchPrice(FoodCourt.FOOD_PASTA)
+    }
+    
+    class FoodCourt{    //사람들이 무슨음식이 있는지 모르므로 이런식으로 사용을 많이 함
+        fun searchPrice(foodName: String){
+            val price = when(foodName){
+                FOOD_PAST -> 20000
+                FOOD_STEAK -> 50000
+                FOOD_PIZZA -> 30000
+                else -> 0
+            }
+            
+            println("${foodName} : ${price}원.")
+        }
+        
+        companion objecet {
+            const val FOOD_PASTA = "파슷하"
+            const val FOOD_STEAK = "스텎끼"
+            const val FOOD_PIZZA = "핏짜"
+        }
+    }
+
+## lateinit
+> _일단 변수만 선언하고 초기값의 할당은 나중에 할 수 있도록 하는 키워드_
+
+코틀린에서는 변수를 선언할 때 객체를 바로 할당하지 않는 경우에는 기본적으로 컴파일이 되지 않음   
+경우에 따라 변수에 객체를 할당하는게 선언과 동시에 할 수 없을 때도 있음
+
+`lateinit var text: String`
+
+**lateinit var 변수의 제한사항**   
+초기값 할당 전까지 변수를 사용할 수 없음 (에러발생)   
+기본 자료형에는 사용할 수 없음 **(String 클래스에는 사용 가능)**
+
+`::a.isInitialized` : lateinit 변수의 초기화 여부 확인
+
+### 예제
+    fun main(){
+        val a = LateInitSample()
+        
+        println(a.getLateInitText())
+        a.text = "바보"
+        println(a.getLateInitText())
+    }
+    
+    class LateInitSample{
+        lateinit var text: String
+        
+        fun getLateInitText(): String{
+            if(::text.isInitialized){
+                return text
+            }else{
+                return "기본값"
+            }
+        }
+    }
+    
+## lazy
+> _변수를 사용하는 시점까지 초기화를 자동으로 늦춰주는 지연 대리자 속성(lazy delegate properties)_
+
+lateinit과 달리 **`by`와 람다함수** 형식을 사용   
+`val a: Int by lazy{7}`
+
+코드에서는 선언시 즉시 객체를 생성 및 할당하여 변수를 초기화하는 형태를 갖고 있지만   
+실제 실행시에는 val 변수를 사용하는 시점에 초기화 과정을 진행하므로써 코드의 **실행시간을 최적화** 할 수 있음   
+람다함수로 초기화가 진행되므로 함수안에 여러구문이 들어갈 수 있으며 **맨 마지막 구문의 결과** 가 변수에 할당됨!
+
+### 예제
+    fun main(){
+        val number: Int by lazy{
+            println("초기화를 합니다")
+            7
+        }
+        
+        println("시작")
+        println(number)
+        println(number)
+    }
+    
+    
+***
+
+
+# [비트연산]
