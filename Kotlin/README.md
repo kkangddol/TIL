@@ -1656,6 +1656,159 @@ lateinit과 달리 **`by`와 람다함수** 형식을 사용
 
 
 # [코루틴을 통한 비동기 처리]
-> _'비동기'로 여러개의 루틴을 동시에 처리할 수 있는 법_
+> _'비동기'로 여러개의 루틴을 동시에 처리할 수 있는 법_   
+> _import kotlinx.coroutines.*_
 
-지금까지 모든 구문을 '동기적'으로 실행했음
+지금까지 모든 구문을 순차적 '동기적'으로 실행했음   
+'여러개의 루틴'을 동시에 실행하여 결과를 내고 싶을때? -> 비동기처리를 지원하는 **코루틴**
+
+코루틴은 메인이 되는 루틴과 별도로 진행이 가능한 루틴으로 개발자가 루틴의 실행, 종료를 마음대로 제어할 수 있는 단위
+
+코루틴을 사용할 때는 kotlinx(코틀린익스텐션)의 coroutines 패키지를 전부 임포트해야함 `import kotlinx.coroutines.*`
+
+코루틴은 **제어범위** 및 **실행범위** 를 지정할 수 있음 -> 이를 **코루틴의 Scope** 라고 함
+
+* GlobalScope : 프로그램 어디서나 제어, 동작이 가능한 기본 범위
+* CoroutineScope : 특정한 목적의 Dispatcher를 지정하여 제어 및 동작이 가능한 범위 (새로운 coroutine의 범위)
+
+_Dispatcher란? : 아니 그래서 디스패쳐가 뭐냐니깐?   
+`Dispatchers.Default` 백그라운드에서 동작하는 디스패쳐   
+`Dispatchers.IO` 네트워크나 디스크등 I/O에 최적화된 동작하는 디스패쳐   
+`Dispatchers.Main` 메인(UI) 스레드에서 함께 동작하는 디스패쳐_   
+이런 Dispatcher들은 모든 플랫폼에서 지원되지는 않으니 조심해서 사용
+
+코루틴은 이러한 Scope에서 제어되도록 생성될 수 있음
+    val scope = CoroutineScope(Dispatcher.Default)
+    val coroutineA = scope.launch{}
+    val coroutineB = scope.async{}
+    
+* `launch` : 반환값이 없는 Job 객체
+* `async` : 반환값이 있는 Deffered 객체 / 마지막 구문의 결과가 반환   
+-> 둘 다 람다함수의 형태
+
+코루틴은 제어되는 스코프 또는 프로그램 전체가 종료되면 함께 종료되기 때문에 코루틴이 끝까지 실행되는 것을 보장하려면   
+일정한 범위에서 코루틴이 모두 실행될 때까지 잠시 기다려주어야 한다?
+
+* `runBlocking{}` : 코루틴이 종료될 때까지 메인 루틴을 잠시 대기시켜줌
+    runBlocking{
+        launch{}
+        async{}
+    }
+**주의 : 안드로이드에서는 메인스레드에서 runBlocking을 걸어주면 일정시간이상 응답이 없는 경우**   
+**ANR(Application Not Responding)이 발생하며 앱이 강제 종료됨**
+
+### 예제
+    import kotlinx.coroutines.*
+    
+    fun main(){
+        val scope = GlobalScope
+        
+        scope.launch{
+            for(i in 1..5){
+                println(i)
+            }
+        }
+        
+        runBlocking{
+            launch{
+                for(i in 1..5){
+                    println(i)
+                }
+            }
+        }
+
+    }
+
+## 루틴의 대기를 위한 추가적인 함수들
+* `delay(milisecond: Long)` : milisecond 단위로 루틴을 잠시 대기시키는 함수
+* `join()` `Job.join()` : Job객체에서 호출하여 Job의 실행이 끝날때까지 대기하는 함수
+* `await()` `Deferred.await()` : Deferred 객체에서 호출하여 Deferred의 실행이 끝날때까지 대기하는 함수 / **Deferred의 결과도 반환함**
+
+세 함수들은 코루틴 내부 또는 runBlocking{}과 같은 루틴의 대기가 가능한 구문 안에서만 동작이 가능
+
+### 예제
+    import kotlinx.coroutines.*
+    
+    fun main(){
+        runBlocking{
+            val a = launch{
+                for(i in 1..5){
+                    println(i)
+                    delay(10)
+                }
+            }
+            val b = async{
+                "async 종료"
+            }
+            
+            println("async 대기")
+            println(b.await())
+            
+            println("launch 대기")
+            a.join()
+            println("launch 종료")
+            
+        }
+
+    }
+
+## 코루틴 실행 도중 중단하는 방법
+* `cancel()` : 코루틴에 cancel()을 걸어주면 두 가지 조건이 발생하며 코루틴을 중단시킬 수 있음
+1. 코루틴 내부의 delay() 함수 또는 yield() 함수가 사용된 위치까지 수행된 뒤 종료
+2. cancel()로 인해 코루틴 내부의 속성인 isActive가 false가 되므로 이를 확인하여 코드를 통해 **수동** 으로 종료
+
+### 예제
+    import kotlinx.coroutines.*
+    
+    fun main(){
+        runBlocking{
+            val a = launch{
+                for(i in 1..5){
+                    println(i)
+                    delay(10)
+                }
+            }
+            val b = async{
+                "async 종료"
+            }
+            
+            println("async 대기")
+            println(b.await())
+            
+            println("launch 대기")
+            a.cancel()
+            println("launch 종료")
+            
+        }
+
+    }
+
+## withTimeoutOrNull()
+> _제한시간 내에 수행되면 결과값을 아닌 경우 null을 반환_   
+> _withTimeoutOrNull(밀리세컨드단위의시간)_   
+> **join() 이나 await() 처럼 blocking 함수임!**
+
+    witTimeoutOrNull(50){
+        for(i in 1..1000){
+            println(i)
+            delay(10)
+        }
+        "Finish"
+    }
+    
+### 예제
+    import kotlinx.coroutines.*
+    
+    fun main(){
+        run Blocking{
+            var result = withTimeoutOrNull(50){
+                for(i in 1..10){
+                    println(i)
+                    delay(10)
+                }
+                "Finish"
+            }
+            println(result)
+        }
+    }
+-> 1 2 3 null
