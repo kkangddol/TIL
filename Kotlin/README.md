@@ -279,20 +279,20 @@ lateinit , lazy 속성은 추후 추가예정
 * `ushr` : 부호비트 포함 오른쪽 쉬프트 연산자 (자바에서 >>> 연산자)
 
 
-    ddshl - signed shift left (equivalent of << operator) 
-    shr - signed shift right (equivalent of >> operator)
-    ushr- unsigned shift right (equivalent of >>> operator)
-    and - bitwise and (equivalent of & operator)
-    or - bitwise or (equivalent of | operator)
-    xor - bitwise xor (equivalent of ^ operator)
-    inv - bitwise complement (equivalent of ~ operator)
+    ddshl - signed shift left (equivalent of << operator)   
+    shr - signed shift right (equivalent of >> operator)   
+    ushr- unsigned shift right (equivalent of >>> operator)   
+    and - bitwise and (equivalent of & operator)   
+    or - bitwise or (equivalent of | operator)   
+    xor - bitwise xor (equivalent of ^ operator)   
+    inv - bitwise complement (equivalent of ~ operator)   
 
-    1 shl 2 // Equivalent to 1.shl(2), 출력 = 4
-    16 shr 2 // 출력 = 4
-    2 and 4 // 출력 = 0
-    2 or 3 // 출력 = 3
-    4 xor 5 // 출력 = 1
-    4.inv() // 출력 = -5
+    1 shl 2 // Equivalent to 1.shl(2), 출력 = 4   
+    16 shr 2 // 출력 = 4   
+    2 and 4 // 출력 = 0   
+    2 or 3 // 출력 = 3   
+    4 xor 5 // 출력 = 1   
+    4.inv() // 출력 = -5   
 
 
 ***
