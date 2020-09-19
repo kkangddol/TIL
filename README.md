@@ -5,3 +5,6 @@
 
 ## [Android](https://github.com/rudeore333/TIL/tree/master/Android)
 > 2020-09-07 ~ ing
+
+
+공부좀해라
