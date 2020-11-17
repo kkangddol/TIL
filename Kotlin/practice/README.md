@@ -39,8 +39,9 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 * [4344](https://www.acmicpc.net/problem/4344) &nbsp; [평균은 넘겠지] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/4344.kt)
     > 소수점 자리 출력할 때 `String.format()` 이용하기 `java.lang.String.format("%.3f", 값)`
 
-> 배열의 평균은 `average()` 메소드   
-> 배열복사할 때 `val arr = 복사할배열.copyOf()`   
-> `Math.메소드`들의 매개변수는 대부분 Double타입   
-
+배열의 평균은 `average()` 메소드   
+배열복사할 때 `val arr = 복사할배열.copyOf()`   
+`Math.메소드`들의 매개변수는 대부분 Double타입   
 문제 꼼꼼히 읽어
+
+
