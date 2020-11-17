@@ -121,6 +121,10 @@ lateinit , lazy 속성은 추후 추가예정
 
 `intArr[2]` 의 값은 `3`
 
+### 더 다양한 Array 메소드들 / 디모 설명 너무 빈약
+* https://brunch.co.kr/@mystoryg/27
+* https://brunch.co.kr/@mystoryg/47
+
 
 ***
 
