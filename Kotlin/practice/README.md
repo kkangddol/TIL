@@ -24,7 +24,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 > [while문](https://www.acmicpc.net/step/2)   
 > [1차원 배열](https://www.acmicpc.net/step/6)
 
-* [10951](https://www.acmicpc.net/problem/10951) &nbsp; [_A+B - 4] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10951.kt)
+* [10951](https://www.acmicpc.net/problem/10951) &nbsp; [A+B - 4] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10951.kt)
     > 테스트 케이스의 개수가 주어지지 않았을 때에는 `Scanner`의 `hasNextInt()`와 같은 메소드를 활용해라.
 
 * [10818](https://www.acmicpc.net/problem/10818) &nbsp; [최소,최대] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10818.kt)
@@ -43,5 +43,12 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 배열복사할 때 `val arr = 복사할배열.copyOf()`   
 `Math.메소드`들의 매개변수는 대부분 Double타입   
 문제 꼼꼼히 읽어
+
+## 20-11-18
+> [함수](https://www.acmicpc.net/step/5)
+
+* [4673](https://www.acmicpc.net/problem/4673) &nbsp; [셀프 넘버] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/4673.kt)
+    > **그냥 풀이가 마음에 안듦 다시 풀것**
+
 
 
