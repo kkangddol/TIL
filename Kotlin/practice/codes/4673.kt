@@ -1,6 +1,11 @@
+import java.io.BufferedWriter
+import java.io.OutputStreamWriter
+
 data class CheckData(var n:Int = 1, var ret:Int = 0)
 
 fun main(){
+    val bw = BufferedWriter(OutputStreamWriter(System.`out`))
+    
     val ans = Array(10001,{0})
     val cd = CheckData()
     while(isSelf(cd) <= 10000){
@@ -9,10 +14,14 @@ fun main(){
     }
     for(i in (1..10000)){
         if(ans[i] == 0){
-            println(i)
+            bw.write(i.toString())
+            if(i < 10000){
+                bw.newLine()
+            }
         }
     }
-    
+    bw.flush()
+    bw.close()
 }
 
 fun isSelf(cd : CheckData) : Int{
