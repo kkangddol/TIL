@@ -16,7 +16,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 > [for문](https://www.acmicpc.net/step/3)    
 
 * [15552](https://www.acmicpc.net/problem/15552) &nbsp; [빠른 A+B] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/15552.kt)   
-    > `BufferedReader`와 `BufferedWriter`를 쓰기.   
+    > `BufferedReader`와 `BufferedWriter`를 쓰기 (BufferedWriter 형식은 무조건 String!).   
     > java에서는 저 두개 말고도 `StringBuilder`로 출력을 모아 놓았다가 그 String을 `System.out.println`하는 방법도 있음.   
     > **`BufferedReader` 와 `BufferedWriter` 사용했으면 꼭 마지막에 `close()` 해줘야함**
 
