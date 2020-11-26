@@ -9,5 +9,3 @@
 
 ## [Algorithm](https://github.com/rudeore333/TIL/tree/master/Algorithm)
 > 2020-10-27 ~ ing
-
-시프과제중이양 ㅎ.ㅎ
