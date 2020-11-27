@@ -49,6 +49,9 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 
 * [4673](https://www.acmicpc.net/problem/4673) &nbsp; [셀프 넘버] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/4673.kt)
     > **그냥 풀이가 마음에 안듦 다시 풀것**
+    
+## 20-11-27
+> [문자열](https://www.acmicpc.net/step/7)
 
 
 
