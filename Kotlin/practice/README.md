@@ -54,3 +54,6 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 > [문자열](https://www.acmicpc.net/step/7)
 
 아스키코드 잊지말것
+
+## 20-11-29
+> [수학1](https://www.acmicpc.net/step/8)
