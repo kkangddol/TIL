@@ -22,7 +22,9 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 
 ## 20-11-17
 > [while문](https://www.acmicpc.net/step/2)   
-> [1차원 배열](https://www.acmicpc.net/step/6)
+> [1차원 배열](https://www.acmicpc.net/step/6)   
+> * [배열 생성법](https://brunch.co.kr/@mystoryg/27)   
+> * [배열 생성법](https://brunch.co.kr/@mystoryg/47)   
 
 * [10951](https://www.acmicpc.net/problem/10951) &nbsp; [A+B - 4] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10951.kt)
     > 테스트 케이스의 개수가 주어지지 않았을 때에는 `Scanner`의 `hasNextInt()`와 같은 메소드를 활용해라.
@@ -42,7 +44,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 배열의 평균은 `average()` 메소드   
 배열복사할 때 `val arr = 복사할배열.copyOf()`   
 `Math.메소드`들의 매개변수는 대부분 Double타입   
-문제 꼼꼼히 읽어
+문제 꼼꼼히 읽어   
 
 ## 20-11-18
 > [함수](https://www.acmicpc.net/step/5)
@@ -50,10 +52,20 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 * [4673](https://www.acmicpc.net/problem/4673) &nbsp; [셀프 넘버] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/4673.kt)
     > **그냥 풀이가 마음에 안듦 다시 풀것**
     
-## 20-11-27
+## 20-11-27 ~ 20-12-02
 > [문자열](https://www.acmicpc.net/step/7)
 
-아스키코드 잊지말것
+* [11720](https://www.acmicpc.net/problem/11720) &nbsp; [숫자의 합] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/11720.kt)
+    > Char to Int : char.toString().toInt()   
+    > Character.getNumericValue(str) || Character::getNumericValue는 무슨뜻이지?
+    > [스택오버플로우질문글](https://stackoverflow.com/questions/47592167/how-do-i-convert-a-char-to-int)
 
-## 20-11-29
-> [수학1](https://www.acmicpc.net/step/8)
+* [1157](https://www.acmicpc.net/problem/11720) &nbsp; [단어 공부] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/1157.kt)
+    > `Array.indexOfFirst` 사용할때 `Array.indexOfFirst{it > 3}` 이런식으로 사용할것. 람다식인가? 그 묵시함수? 뭐였지? 그런건가?   
+    > 이거 풀때 `Array.count{it == Array.max()}` 의 개수가 2 이상이면 ? 출력하게 해도 되겠네
+    
+
+`java.util.StringTokenizer` 잊지말것   
+**아스키코드 잊지말것**   
+`String.reversed()` 는 문자열의 순서를 뒤집은 문자열을 반환   
+
