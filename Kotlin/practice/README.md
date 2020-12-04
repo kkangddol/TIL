@@ -69,3 +69,6 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 **아스키코드 잊지말것**   
 `String.reversed()` 는 문자열의 순서를 뒤집은 문자열을 반환   
 
+
+## 20-12-04
+> [수학1](https://www.acmicpc.net/step/8)
