@@ -72,3 +72,5 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 
 ## 20-12-04
 > [수학1](https://www.acmicpc.net/step/8)
+
+## 20-12-06
