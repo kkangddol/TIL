@@ -9,6 +9,3 @@
 
 ## [Algorithm](https://github.com/rudeore333/TIL/tree/master/Algorithm)
 > 2020-10-27 ~ ing
-
-## [기말고사]
-> 2020-11-30 ~ 2020-12-16
