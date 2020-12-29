@@ -73,4 +73,6 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 ## 20-12-28
 > [수학1](https://www.acmicpc.net/step/8)
 
+* [2869](https://www.acmicpc.net/problem/2869) &nbsp; [달팽이는 올라가고 싶다] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/2869.kt)
+    > 막힘. for문을 줄일 수 있는 방법을 찾아야 함
 
