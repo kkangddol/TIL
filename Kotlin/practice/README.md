@@ -74,5 +74,8 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 > [수학1](https://www.acmicpc.net/step/8)
 
 * [2869](https://www.acmicpc.net/problem/2869) &nbsp; [달팽이는 올라가고 싶다] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/2869.kt)
-    > 막힘. for문을 줄일 수 있는 방법을 찾아야 함
+    > 막힘. for문을 줄일 수 있는 방법을 찾아야 함.   
+    > 처음에는 v/a부터 v/(a-b) 까지 순차적으로 v를 넘는지 체크했더니 금방 시간초과가 나옴.   
+    > 따라서 v/(a-b)부터 v/a까지 역으로 v를 못넘는지 체크했더니 시간초과는 해결했으나 답을 틀림.   
+    > 해결했음 조금 더 경우의 수를 자세하게 파악해볼것!
 
