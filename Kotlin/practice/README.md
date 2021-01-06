@@ -79,6 +79,18 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
     > 따라서 v/(a-b)부터 v/a까지 역으로 v를 못넘는지 체크했더니 시간초과는 해결했으나 답을 틀림.   
     > 해결했음 조금 더 경우의 수를 자세하게 파악해볼것!
     
+
+* [10757](https://www.acmicpc.net/problem/10757) &nbsp; [큰 수 A+B] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10757.kt)
+    > BigInteger 사용하는 문제.   
+    > BigInteger가 없는 경우 String으로 바꿔서 한자리 한자리 더해주고 올림발생하면 다음자릿수에 +1 해주면서 처리.
+    
+
+* [1011](https://www.acmicpc.net/problem/10757) &nbsp; [Fly me to the Alpha Centauri] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/1011.kt)
+    > 재귀로 접근. 하지만 DFS방식으로 진행되었고 또 제대로 가지치기랑 종료가 되지않아서 타임오버.   
+    > ~최소이려면 어차피 공차가 1인 등차수열이 2개인거니까~   
+    > 1은 1 2는 11 3은 111 4는 121 5는 1211,1121 6은 1221 7은 12211 11221 ...   
+    
+    
 문제의 출력 조건 조심! **한줄**
 
 
