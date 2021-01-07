@@ -1,12 +1,40 @@
-출처 : 디모의 Kotlin 강좌 (https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)
+출처 : 디모의 Kotlin 강좌 (https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)   
+        Do it! 코틀린 프로그래밍
 
-# **[변수와 자료형]**
+# 「Kotlin」
+> 자료형 오류를 미리 잡을 수 있는 '정적 언어'   
+> NullSafe   
+> 간결하고 효율적   
+> 함수형 프로그래밍, 객체 지향 프로그래밍 모두 가능   
+> 세미콜론을 생략할 수 있음;
+
+## 코틀린 패키지
+> _프로젝트는 모듈⊃패키지⊃파일 로 구성_   
+
+* 패키지 이름을 선언하지 않으면 그 파일은 자동으로 default 패키지에 포함   
+* `import`로 다른 패키지 사용할 수 있음   
+* 이 파일과 패키지 내에 같은 이름의 클래스가 있다면 `import ~~ as ~~` 로 별명을 지어서 사용   
+
+
+# **[변수와 자료형, 연산자]**
 > _클래스 이름은 파스칼 표기법 (ClassName)_   
 > _함수나 변수 이름은 카멜 표기법 (functionName)_   
-> _!자바와 달리 코틀린의 모든 자료형은 객체!_
+> _!자바와 달리 코틀린의 모든 자료형은 객체! -> 참조형 자료형_
+
+코틀린의 자료형은 **참조형 자료형** _성능 최적화를 위해 코틀린 컴파일러에서 다시 기본형으로 대체되므로 이러한 최적화를 내가 신경쓰지 않아도 됨_   
+값(동등성) 비교 `==`   
+참조 비교 `===`
+
+### 자료형에 별명 붙이기
+> `typealias` 이용해 자료형에 별명 붙임. 고차 함수와 람다식에서 많이 씀.
+
+	typealias Username = String
+	val user: Username = "Kildong"
+
+
 
 * **var** : 일반적으로 통용되는 변수, 언제든지 읽기쓰기 가능
-* **val** : 선언시 초기화, 중간에 값 변경 불가
+* **val** : 선언시 초기화, 중간에 값 변경 불가 -> _val로 선언해서 사용하고 나중에 변경이 필요하면 그때가서 var로 바꾸는게 좋다?_
 
 **여기서 val은 최초에 변수에 할당했던 객체 대신 다른 객체를 할당할 수 없다는 얘기임. val A에 MutableList를 할당하고 그 객체의 내부 구조에 따라 데이터를 조작할 수 있지만**   
 **앞서 할당한 val A에 다른 MutableList를 할당할 수는 없다는 뜻.**
@@ -15,27 +43,59 @@
 
 **Local Variable(로컬변수)** : 이 외의 Scope 내에 선언된 변수
 
-`var a : Int` -> 코틀린은 기본변수에서 null을 허용하지 않고 초기화하지않으면 컴파일이 안된다. 의도치않는 에러나 null pointer exception을 원천적으로 차단?
+~`var a : Int` -> 코틀린은 기본변수에서 null을 허용하지 않고 초기화하지않으면 컴파일이 안된다. 의도치않는 에러나 null pointer exception을 원천적으로 차단?~
+`val a : Int` -> 자료형만 지정해주면 변수를 선언'만' 할 수 있음
 
 `var a : Int? = null` -> 자료형 뒤에 물음표를 붙여 nullable 변수로 활용 가능. 꼭 필요할때만 사용할것
 
 lateinit , lazy 속성은 추후 추가예정
 
 ### 정수자료형
+> 명시하지 않으면 웬만하면 Int로 추론
 
-* Byte 1bytes
-* Short 2bytes
-* Int 4bytes
-* Long 8bytes
+**부호가 있는 정수 자료형**
+* Byte 1Bytes	_[-2^7 ~ 2^7 - 1 (-128 ~ 127)]_
+* Short 2Bytes	_[-2^15 ~ 2^15 - 1 (-32,768 ~ 32,767)]_
+* Int 4Bytes	_[-2^31 ~ 2^31 - 1]_
+* Long 8Bytes	_[-2^63 ~ 2^63 - 1]_
+
+**부호가 없는 정수 자료형**
+* UByte 1bytes	_[0 ~ 2^8 - 1 (0 ~ 255)]_
+* UShort 2Bytes	_[0 ~ 2^16 - 1 (0 ~ 65,535)]_
+* UInt 4Bytes	_[0 ~ 2^32 - 1]_
+* ULong 8Bytes	_[0 ~ 2^64 - 1]_
+
+코틀린에서 자리수가 많아지면 언더스코어 `_` 로 자리수를 구분한다.   
+`val num = 1_000_000`
+
 
 ### 실수자료형
+> 명시하지 않으면 Double로 추론
 
 * Float 4bytes
 * Double 8bytes -> 기본
 
+부동 소수점 : `3.14e2` , `3.14e-2`
+
+부동 소수점으로 표현할 때 가수 부분이 **52비트**를 넘어가면 **오차** 주의!
+
+### 정수,실수 자료형의 최솟값과 최댓값
+> _`MIN_VALUE` 와 `MAX_VALUE` 사용_
+
+`Byte.MIN_VALUE` , `Byte.MAX_VALUE` ...
+
+
 ### 문자자료형
 
-* Char 2bytes
+* Char 2bytes	[0 ~ 2^15 -1 (\u0000 ~ \uffff)]
+
+문자 자료형의 선언과 사용을 구분하여 기억!   
+문자 자료형 값을 저장할 때 문자 세트(아스키코드 표, 유니코드 표)를 참고하여 **'번호'**로 저장.   
+!선언할 때 만큼은 **문자 값으로 선언**!   
+선언한 다음에는 문자 자료형에 숫자를 더하는 방식 가능
+
+`toChar()` : 정숫값을 문자로 변환
+ex) `65.toChar()` == 'A'
 
 ### 논리형
 
@@ -46,11 +106,11 @@ lateinit , lazy 속성은 추후 추가예정
 
 `var intValue:Int = 1234`
  
-`var longValue:Long = 1234L`
+`var longValue:Long = 1234L` <- 접미사 L
 
-`var intValueByHex:Int = 0x1af` _16진수_
+`var intValueByHex:Int = 0x1af` _16진수_ <- 접두사 0x
 
-`var intValueByBin:Int = 0b10110110` _2진수_
+`var intValueByBin:Int = 0b10110110` _2진수_ <- 접두사 0b
 
 ### 실수형 리터럴
 
@@ -90,9 +150,10 @@ lateinit , lazy 속성은 추후 추가예정
 
 > _변수 앞에 $ 를 붙여 출력_
 
-`println("i : $i, j : $j")`
+`println("i : $i, j : $j")`   
+`println("안녕하세요. ${personA.birthYear}년생 ${personA.name} 입니다.")` -> println이 문자로 오인할 수 있기때문에 {}로 감싼것   
+역슬래쉬 `\` 대신 `${''}` 도 사용가능.
 
-`println("안녕하세요. ${personA.birthYear}년생 ${personA.name} 입니다.")` -> println이 문자로 오인할 수 있기때문에 {}로 감싼것
 
 
 ***
