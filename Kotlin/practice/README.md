@@ -98,4 +98,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 > [수학2](https://www.acmicpc.net/step/10)
 
 
+소수 관련문제에서 1 실수하지 말것
+
+
 
