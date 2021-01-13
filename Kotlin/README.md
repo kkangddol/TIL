@@ -1,7 +1,7 @@
 출처 : 디모의 Kotlin 강좌 (https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)   
         Do it! 코틀린 프로그래밍
 
-210112
+# 210112
 * 함수
 * 간단하게 표현한 함수
 * 반환값이 없는 함수(`Unit` 자료형, `Unit` 과 `void` 의 차이점)
