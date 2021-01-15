@@ -100,5 +100,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 
 소수 관련문제에서 1 실수하지 말것
 
+## 21-01-15
+
 
 
