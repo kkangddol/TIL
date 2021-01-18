@@ -94,13 +94,11 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
     
 문제의 출력 조건 조심! **한줄**
 
-## 21-01-09
+## 21-01-09 ~ ing
 > [수학2](https://www.acmicpc.net/step/10)
+
+골드바흐 푸는중
 
 
 소수 관련문제에서 1 실수하지 말것
-
-## 21-01-15
-
-
 
