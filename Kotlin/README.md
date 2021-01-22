@@ -90,6 +90,8 @@
 > `try` `catch` `finally` `throw`
 * 정규식 : matches와 Regex (https://regexr.com/ 에서 연습가능)
 
+## 210122
+* 클래스,생성자,상속
 
 
 
