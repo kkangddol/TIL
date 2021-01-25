@@ -108,6 +108,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
     > 꼬리재귀함수 한번 써봤음
 
 * [2447](https://www.acmicpc.net/problem/10870) &nbsp; [별 찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/2447.kt)
-    > 천천히 하나씩 해보자
+    > 천천히 하나씩 해보자   
+    > 우선 N by N 배열을 만들고 그것들 중 재귀적으로 5번째를 구멍 뚫어서 출력만 하면 될거같은데..
 
 
