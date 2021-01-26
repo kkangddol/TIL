@@ -94,11 +94,21 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
     
 문제의 출력 조건 조심! **한줄**
 
-## 21-01-09 ~ ing
+## 21-01-09 ~ 21-01-21
 > [수학2](https://www.acmicpc.net/step/10)
 
-골드바흐 푸는중
-
-
+이렇게 오래걸릴 문제들 아니었음. 다른 공부랑 시간할당 잘 할것.
 소수 관련문제에서 1 실수하지 말것
+
+## 21-01-22
+> [재귀](https://www.acmicpc.net/step/11)
+
+* [10872](https://www.acmicpc.net/problem/10872) &nbsp; [팩토리얼] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10872.kt)
+* [10870](https://www.acmicpc.net/problem/10870) &nbsp; [피보나치 수 5] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10870.kt)
+    > 꼬리재귀함수 한번 써봤음
+
+* [2447](https://www.acmicpc.net/problem/10870) &nbsp; [별 찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/2447.kt)
+    > 천천히 하나씩 해보자   
+    > 우선 N by N 배열을 만들고 그것들 중 재귀적으로 5번째를 구멍 뚫어서 출력만 하면 될거같은데..
+
 
