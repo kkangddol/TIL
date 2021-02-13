@@ -216,8 +216,8 @@
 * 데이터 클래스
 	> DTO(Data Transfer Object) : 데이터 전달을 위한 객체 (자바에서는 POJO(Plain Old Java Object)라고 부르기도 했음)   
 	> DTO는 구현 로직을 가지고 있지 않고 순수한 데이터 객체를 표현 -> 속성과 속성을 접근하고자 하는 Getter/Setter를 가짐   
-	> 추가적으로 `toString()`,`equals()` 등과 같은 데이터를 ㅛ현하거나 비교하는 메서드를 가져야 함   
-	> 코틀리에서는 Getter/Setter,`toString()`,`equals()`가 내부적으로 **지동 생성**   
+	> 추가적으로 `toString()`,`equals()` 등과 같은 데이터를 표현하거나 비교하는 메서드를 가져야 함   
+	> 코틀리에서는 Getter/Setter,`toString()`,`equals()`가 내부적으로 **자동 생성**   
 	> 코틀린 데이터클래스 자동생성 메서드 : Getter/Setter, `equals()`, `hashCode()`, `toString()`, `copy()`, `component1()`, `component2()` 등   
 
 * 이너 클래스
