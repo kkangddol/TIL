@@ -219,7 +219,9 @@
 	> 추가적으로 `toString()`,`equals()` 등과 같은 데이터를 ㅛ현하거나 비교하는 메서드를 가져야 함   
 	> 코틀리에서는 Getter/Setter,`toString()`,`equals()`가 내부적으로 **지동 생성**   
 	> 코틀린 데이터클래스 자동생성 메서드 : Getter/Setter, `equals()`, `hashCode()`, `toString()`, `copy()`, `component1()`, `component2()` 등   
-	
+
+* 이너 클래스
+* 열거형 클래스
 
 
 # **[변수와 자료형, 연산자]**
