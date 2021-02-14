@@ -146,6 +146,8 @@
 
 
 ## 210211 프로퍼티와 초기화
+	> 코틀린의 프로퍼티 = 필드(변수) + Getter 와 Setter
+
 * `by`를 통한 위임
 	> `<val|var|class> 프로퍼티 혹은 클래스 이름 : 자료형 by 위임자`   
 	> 상속과 비슷하게 해당 클래스의 모든 기능을 사용하면서 동시에 기능을 추가 확장 구현   
@@ -213,16 +215,29 @@
 ## 210212
 	> 7-2 데이터 클래스와 기타 클래스
 * 데이터(Data) 클래스, 실드(Sealed) 클래스, 이너(Inner) 클래스, 열거형(Enum) 클래스 등
-* 데이터 클래스
-	> DTO(Data Transfer Object) : 데이터 전달을 위한 객체 (자바에서는 POJO(Plain Old Java Object)라고 부르기도 했음)   
-	> DTO는 구현 로직을 가지고 있지 않고 순수한 데이터 객체를 표현 -> 속성과 속성을 접근하고자 하는 Getter/Setter를 가짐   
-	> 추가적으로 `toString()`,`equals()` 등과 같은 데이터를 표현하거나 비교하는 메서드를 가져야 함   
-	> 코틀리에서는 Getter/Setter,`toString()`,`equals()`가 내부적으로 **자동 생성**   
-	> 코틀린 데이터클래스 자동생성 메서드 : Getter/Setter, `equals()`, `hashCode()`, `toString()`, `copy()`, `component1()`, `component2()` 등   
 
-* 이너 클래스
-* 열거형 클래스
+### 데이터 클래스
+	> `data` 키워드를 통해 선언   
+	> 데이터 클래스 3가지 조건
+* DTO(Data Transfer Object) : 데이터 전달을 위한 객체 (자바에서는 POJO(Plain Old Java Object)라고 부르기도 했음)   
+* DTO는 구현 로직을 가지고 있지 않고 순수한 데이터 객체를 표현 -> 속성과 속성을 접근하고자 하는 Getter/Setter를 가짐   
+* 추가적으로 `toString()`,`equals()` 등과 같은 데이터를 표현하거나 비교하는 메서드를 가져야 함   
+* 코틀리에서는 Getter/Setter,`toString()`,`equals()`가 내부적으로 **자동 생성**   
+* 코틀린 데이터클래스 자동생성 메서드 : Getter/Setter, `equals()`, `hashCode()`, `toString()`, `copy()`, `component1()`, `component2()` 등   
+* 객체 디스트럭처링
+	> `val (name,email) = cus1` -> 객체가 가지고 있는 프로퍼티를 개별 변수로 분해하여 할당   
+	> 특정 프로퍼티를 가져올 필요가 없는 경우 언더스코어(`_`)를 사용해 제외. `val (_,email) = cus1`   
+	> 개별적으로 가져올 때 사용하는 `componentN()`. `val name2 = cus1.component1()`   
+	> `for((name,email) in customers)` customers 의 모든 객체를 반복하면서 프로퍼티를 분해   
+	> `val (myName, myEmail) = myFunc()` 함수로부터 객체가 반환될 경우에도 사용 가능   
+	> 람다식에서도 디스트럭처링 가능 p.321   
 
+### 내부 클래스 기법
+	> 중첩(Nested) 클래스   
+	> 이너(Inner) 클래스   
+* 자바의 내부 클래스와의 비교
+#### 중첩 클래스
+#### 이너 클래스
 
 # **[변수와 자료형, 연산자]**
 > _클래스 이름은 파스칼 표기법 (ClassName)_   
