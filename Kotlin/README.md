@@ -1,6 +1,7 @@
 출처 : 디모의 Kotlin 강좌 (https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)   
         Do it! 코틀린 프로그래밍
 
+
 # 「Kotlin」
 > 자료형 오류를 미리 잡을 수 있는 '정적 언어'   
 > NullSafe   
@@ -231,6 +232,50 @@
 	> `for((name,email) in customers)` customers 의 모든 객체를 반복하면서 프로퍼티를 분해   
 	> `val (myName, myEmail) = myFunc()` 함수로부터 객체가 반환될 경우에도 사용 가능   
 	> 람다식에서도 디스트럭처링 가능 p.321   
+	
+1. `equals()` : 내용의 동일성을 판단하는
+2. `hashcode()` : 객체의 내용에서 고유한 코드를 생성하는
+3. `toString()` : 포함된 속성을 보기쉽게 나타내는
+4. `copy()` : 객체를 복사하여 똑같은 내용의 새 객체를 만드는
+    똑같은 내용의 객체를 생성할 수 있지만 패러미터를 줘 일부 속성을 변경할 수도 있다.
+    val a = Data("A",7)
+    val b = a.copy()
+    val c = a.copy("B")
+5. `componentX()` : 속성을 순서대로 반환하는
+    Data("A", 7) 에서 "A"가 component1(), 7이 component2()
+
+### 예제
+    fun main(){
+        val a = General("A",1)
+        println(a == General("A",1)
+        println(a.hashcode())
+        println(a)
+        
+        val b = Data("B",2)
+        println(b == Data("B",2))
+        println(b.hashcode())
+        println(b)
+        
+        println(b.copy())
+        println(b.copy("C"))
+        println(b.copy(3))
+    }
+    class General(val name: String, val id: Int)
+    data class Data(val name: String, val id: Int)
+
+
+**for문의 내부적으로는 a에 component1(), b에 component2() 함수를 사용해 순서대로 값을 불러옴**
+
+    fun main(){
+        val list = listOf(Data("A",1),
+                        Data("B",2),
+                        Data("C",3))
+        for((a,b) in list){    // 내부적으로는 a에는 component1()이 b에는 component2()라는 함수를 사용하여 순서대로 값을 불러옴
+            println("${a}, ${b}")
+        }
+    }
+    class General(val name: String, val id: Int)
+
 
 ### 내부 클래스 기법
 	> 중첩(Nested) 클래스   
