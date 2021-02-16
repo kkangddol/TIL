@@ -26,7 +26,7 @@
 ## [Python]()
 > 파이썬도 하고 싶다
 
-## [RxJava , RxKotlin]()
+## [RxJava , RxKotlin, RxAndroid?]()
 > 이것도 하고 싶다
 
 ## [Unity]()
