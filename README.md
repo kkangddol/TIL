@@ -3,6 +3,7 @@
 ## [Kotlin](https://github.com/rudeore333/TIL/tree/master/Kotlin)
 > 2020-08-19 ~ 2020-09-07   
 > 2021-01-07 ~ ing (Doit! 코틀린프로그래밍)
+> 2월 내로 무조건 
 
 ## [Android](https://github.com/rudeore333/TIL/tree/master/Android)
 > 2020-09-07 ~ fail   
