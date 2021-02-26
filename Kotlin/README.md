@@ -466,10 +466,22 @@
 ### 배열을 사용하는 방법
 #### 기본적인 배열 표현
 
+***
+## 배열
+> _Array\<T\>_     _T는 제너릭_
 
+`var intArr = arrayOf(1, 2, 3, 4, 5)`
 
+`var nullArr = arrayOfNulls<Int>(5)` -> 비어있는 배열
 
+`intArr[2]` 의 값은 `3`
 
+### 더 다양한 Array 메소드들 / 디모 설명 너무 빈약
+* https://brunch.co.kr/@mystoryg/27
+* https://brunch.co.kr/@mystoryg/47
+***
+
+## 08-3 문자열 다루기
 
 
 
