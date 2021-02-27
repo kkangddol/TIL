@@ -339,16 +339,16 @@
     }
 ***
 
-# 7-3 연산자 오버로딩
+## 07-3 연산자 오버로딩
 > p.340
 * 연산자의 작동 방식
-> `val a = 5` `val b = 10` `print(a.plus(b))` 이는 `print(a+b)`와 동일
+	> `val a = 5` `val b = 10` `print(a.plus(b))` 이는 `print(a+b)`와 동일
 * operator 키워드
 * `plus()` 연산자 오버로딩 예시
 * `mod`연산자 함수 이름이 `rem` 으로 변경
-## 호출 연산자
+### 호출 연산자
 * `invoke`
-## 대입 연산자
+### 대입 연산자
 * `+`에 대응하는 `plus()`를 오버로딩하면 `+=` 는 자동으로 구현! -> 2개를 동시에 오버로딩하면 `+`의 동작을 무엇으로 할지 모호 -> 오류
 
 # 08. 제너릭과 배열
@@ -443,8 +443,8 @@
 그 자료형과 하위 자료형의 요소만 담을 수 있도록 제한할 수 있음
 
 * `Nothing` 클래스
-	> 코틀린의 최하위 자료형으로 아무것도 가지고 있지 않은 클래스
-	> 최상위의 `Any`와는 정반대
+	> 코틀린의 최하위 자료형으로 아무것도 가지고 있지 않은 클래스   
+	> 최상위의 `Any`와는 정반대   
 	> `Nothing`은 보통 아무것도 존재하지 않는 값을 표현할 때 사용
 #### 자료형 프로젝션의 정리
 |종류|예|가변성|제한|
@@ -467,10 +467,10 @@
 ### 배열을 사용하는 방법
 #### 기본적인 배열 표현
 * `arrayOf()` : 괄호안의 요소들로 초기화
-	> `arrayOf<자료형>()` : 특정 자료형으로만 제한
-	> ex) `arrayOf<Int>()`
-	> `자료형+Array()` : 특정 자료형으로만 제한
-	> ex) `intArrayOf()`, `byteArrayOf()`, `shortArrayOf()`, `longArrayOf()`, `booleanArrayOf()`, `charArrayOf()`, ...
+	> `arrayOf<자료형>()` : 특정 자료형으로만 제한   
+	> ex) `arrayOf<Int>()`   
+	> `자료형+Array()` : 특정 자료형으로만 제한   
+	> ex) `intArrayOf()`, `byteArrayOf()`, `shortArrayOf()`, `longArrayOf()`, `booleanArrayOf()`, `charArrayOf()`, ...   
 	> ex) `ubyteArrayOf()`, `ushortArrayOf()`, `uintArrayOf()`, `ulongArrayOf()` -> 부호 없는 정수의 자료형
 * `Array()` : Array 클래스 생성자
 * `arrayOfNulss()` : 빈 상태의 배열
@@ -499,7 +499,7 @@ public class Array<T>{
 * 두 번째 인자는 람다식 초깃값 `init: (Int) -> T`(위의 `constructor` 확인)
 	> ex) `val arr3 = Array(5, {i -> i * 2})`
 * 요소 개수가 많은 배열을 생성하려면 `arrayOfNulls`를 사용하거나 표현식 사용
-	> ex) `var a = arrayOfNulls<Int>(1000)`
+	> ex) `var a = arrayOfNulls<Int>(1000)`   
 	> ex) `var a = Array(1000, {0})`
 * 특정 클래스 객체로 배열을 만들려면 다양한 **람다식 표현법**으로 필요한 요소 생성
 	> ex) `var a = Array(1000, {i -> myClass(i)})`
@@ -531,8 +531,8 @@ val arr2 = arr1.plus(6)
 * `sum()` : 요소를 합산
 * `fill()` : 주어진 요소를 채움
 * `contains()` : 배열에 특정 요소가 포함되어 있는지 확인(있으면 true 반환)
-	> `operator fun <T> Array<out T>.contains(element: T): Boolean`
-	> 이 표현은 결국 중위 표현법으로 `in` 연산자를 사용
+	> `operator fun <T> Array<out T>.contains(element: T): Boolean`   
+	> 이 표현은 결국 중위 표현법으로 `in` 연산자를 사용   
 	> `arr.contains(4)` == `4 in arr` 같은 표현임
 * 등등..
 * [Array 표준 라이브러리](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array)
@@ -575,18 +575,146 @@ while(iter.hasNext()){
 * `sortedBy()`
 * `sortedByDescending()`
 #### sortBy()로 데이터 클래스 정렬하기 (데이터클래스 p.317 참고)
-* [예제코드]()
+* [예제코드](https://github.com/rudeore333/TIL/blob/master/Kotlin/Do%20it!%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/KotlinProgramming/src/chap08/section2/ArraySortedClass.kt)
 * Arrays.kt 파일의 함수의 원형
 `public inline fun <T, R : Comparable<R>> Array<out T>.sortBy(crossline selector: (T) -> R?): Unit`
-**!!Ctrl + B 를 누르고 선언부를 참조해 함수의 정의를 확인해보기!!**
+**!!Ctrl + B 를 누르고 선언부를 참조해 함수의 정의를 확인해보기!! p.387**
 #### sortWith() 비교자로 정렬하기
+> 비교자(Comparator)에 의해 정렬하는 방법   
+> `sortWith()`는 Array에 확장된 제네릭 메서드
+`public fun <T> Array<out T>.sortWith(comparator: Comparator<in T>): Unit`
+* [예제코드1]()
+	> Comparator는 자바의 인터페이스로서 2개의 객체를 비교하는 `compare()`를 구현
+* [예제코드2]()
+	> `compareBy()`를 함께 사용하면 이름을 먼저 정렬, 이름이 동일한 경우 가격 기주으로 다시 정렬
+#### 배열 필터링하기
+* `filter()` 메서드를 활용해 원하는 데이터를 골라내기
+```
+//0보다 큰 수 골라내기
+val arr = arrayOf(1, -2, 3, 4, -5, 0)
+arr.filter {e -> e > 0}.forEach{e->print("$e")}
+```
+```
+// a로 시작하는 요소만 골라서 map을 받아 대문자로 변경 후 출력
+fun main(){
+	val fruits = arrayOf("banana", "avocado", "apple", "kiwi")
+	fruits
+	.filter {it.startsWith('a')}
+	.sortedBy{it}
+	.map{it.toUpperCase()}
+	.forEach{println(it)}
+}
+```
+* 이렇게 여러 개의 메서드를 연속해서 호출하는 방법을 **메서드 체이닝(Method Chaining)** 이라고 함
+* 특정 요소가 있는지 확인하는 방법은 when문과 in을 함께 사용
+* `minBy()` : 가장 작은 값
+* `maxBy()` : 가장 큰 값
+`println(products.minBy{it.price})`
+`println(products.maxBy{it.price})`
+
+### 배열 평탄화 하기
+> 다차원 배열을 단일 배열로 만드는 것   
+* 코틀린 에서는 Array에 `flatten()` 메서드를 통해 평탄화 기능 지원
+`val flattenSimpleArray = simpleArray.flatten()`
 
 
 ## 08-3 문자열 다루기
+### 문자열의 기본 처리
+> 문자열은 연속된 문자의 배열과 같음   
+> 문자열은 불변(immutable) 값으로 생성되기 때문에 참조되고 있는 메모리가 변경될 수 없음   
+> 새로운 값을 할당하려고 한다면 기존 메모리 이외에 새로운 문자열을 위한 메모리를 만들어 할당
+* `var`로 선언하는 경우 전체 문자열을 내부적으로 새로 생성해 **할당**되고 기존 사용하던 메모리 공간은 GC에 의해 제거
+* 대량의 문자열을 다룰 때는 메모리의 낭비 등이 일어나지 않도록 주의
+#### 문자열 추출하고 병합하기
+> 문자열은 특수한 형태의 문자 배열. 따라서 문자열의 각 문자는 특정 인덱스를 가짐.
+* 특정 범위의 문자열을 추출하기 위해 `substring()`이나 `subSequence()`를 사용해 특정 인덱스의 범위를 지정할 수 있음
 
+|String.substring(인덱스 범위 지정): String|
+|---|
 
+|CharSequence.subSequence(인덱스 범위 지정): CharSequence|
+|---|
 
+* 문자열의 특정 인덱스를 바꿀때 앞뒤로 추출하고 바꾼뒤 + 연산자로 병합해 다시 할당
+```
+var s = "abcdef"
+s = s.substring(0..1) + "x" + s.substring(3..s.length-1)
+```
+#### 문자열 비교하기
+* `s1.compareTo(s2) : s1과 s2가 같다면 0, s1이 s2보다 작으면 양수, 그렇지 않으면 음수.
+	> 두 번째 인자로 true를 주게되면 대소문자를 무시한다.
+#### StringBuilder 사용하기
+* 문자열이 사용할 공간을 좀 더 크게 잡을 수 있음 -> 요소를 변경할 때 이 부분을 사용, 특정 단어를 변경 가능
+* 기존의 문자열보다 처리 속도가 느림, 변경이 없으면 메모리 낭비
+* 문자열이 자주 변경되는 경우에 사용할 것
+* **여유분의 공간이 핵심!**
 
+```
+var s = StringBuilder("Hello")
+s[2] = 'x'
+```
+
+* StringBuilder의 기타 관련 메서드를 사용하면 포함(append),추가(insert),삭제(delete)가 용이
+* 문자열을 포함시키기 위해 사용하는 `append()`는 **생성된 버퍼**를 사용하므로 보통 +연산자를 이용해 새로운 문자열 객체를 만들어 처리하는 것보다 더 좋음!
+
+```
+s.append("World") //뒤에 덧붙임
+s.insert(10,"Added") //인덱스 10번부터 추가
+s.delete(5,10) // 인덱스 5번부터 10번 "전"까지 삭제
+```
+#### 기타 문자열 처리
+* `toLowerCase()`
+* `toUpperCase()`
+* `split()` : 매개변수를 기준으로 문자열을 잘라냄. 대체로 컬렉션 List<String>으로 추론되어 할당됨!
+	> 분리 문자는 여러개가 될 수도 있다
+* `trim()`
+
+#### 문자열을 정수로 변환하기
+* `toInt()`
+	> 자바의 `Integer.ParseInt`를 사용함
+숫자가 아닌 경우 `NumberFormatException` 오류를 발생 -> try~catch 블록으로 처리   
+```
+try{
+"12w".toInt()
+} catch(e: NumberFormatException){
+  println(e.printStackTrace())
+}
+```
+* `toIntOrNull()` : 숫자가 아닌 문자가 포함되었을 때 null 반환 받고자 할 때
+
+### 리터럴 문자열
+> 특수한 문자를 처리하기 위해 백슬래시(\)를 포함한 문자표현인 이스케이프 문자를 사용 가능
+
+|이스케이프 문자의 종류|||
+|:---|:---|:---|
+|\t 탭(tab)|\r 캐리지 리턴(carriage return|\\ 백슬래시(backslash)|
+|\b 백스페이스(backspace)|\\' 작은따옴표(single quote)|\\$ 달러기호(dollar)|
+|\n 개행(newline)|\\" 큰따옴표(double quote)||
+* 유니코드를 사용할 수 있음 `\uHHHH` 형태로 16진값을 나타냄
+* 3중 따옴표(""")를 사용하면 개행문자를 넣지 않고도 원본 문자열 그대로 개행까지 표시 가능
+* `trimMargin()`을 사용해 특정 문자 기준으로 공백 제거 가능. 기본값은 파이프 기호(`|`)
+#### 형식 문자 사용하기
+> 코드의 결괏값을 문자열의 원하는 형태로 나타낼 수 있음
+* String에 `format()`을 사용 가능
+
+|inline fun String.format(vararg args:Any?): String (source)|
+
+|형식 문자의 종류|||
+|:---|:---|:---|
+|%b 참과 거짓의 Boolean 유형|%o 8진 정수|%g 10진 혹은 E 표기법의 실수|
+|%d 부호 있는 정수|%t 날짜나 시간|%n 줄 구분|
+|%f 10진 실수|%c 문자|%s 문자열|
+|%h 해시코드|%e E 표기법의 실수|%x 16진 진수|
+
+```
+val pi = 3.1415926
+val dec = 10
+val s = "hello"
+println("pi = %.2f, %3d, %s".format(pi,dec,s))
+```
+
+# 09 컬렉션
+## 09-1 컬렉션의 구조와 기본
 
 
 
