@@ -583,9 +583,9 @@ while(iter.hasNext()){
 > 비교자(Comparator)에 의해 정렬하는 방법   
 > `sortWith()`는 Array에 확장된 제네릭 메서드
 `public fun <T> Array<out T>.sortWith(comparator: Comparator<in T>): Unit`
-* [예제코드1]()
+* [예제코드1](https://github.com/rudeore333/TIL/blob/master/Kotlin/Do%20it!%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/KotlinProgramming/src/chap08/section2/ArraySortedSortWith.kt)
 	> Comparator는 자바의 인터페이스로서 2개의 객체를 비교하는 `compare()`를 구현
-* [예제코드2]()
+* [예제코드2](https://github.com/rudeore333/TIL/blob/master/Kotlin/Do%20it!%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/KotlinProgramming/src/chap08/section2/ArraySortedSortWith2.kt)
 	> `compareBy()`를 함께 사용하면 이름을 먼저 정렬, 이름이 동일한 경우 가격 기주으로 다시 정렬
 #### 배열 필터링하기
 * `filter()` 메서드를 활용해 원하는 데이터를 골라내기
