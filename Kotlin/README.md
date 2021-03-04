@@ -718,29 +718,104 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 > 자주 사용하는 기초적인 자료구조를 모아놓은 일종의 프레임워크로 표준 라이브러리로 제공   
 ### 코틀린의 컬렉션
 #### 컬렉션의 종류
+> List, Set, MAp 등이 있음   
+> 자바와 달리 불변형과 가변형으로 나뉨   
+
+**컬렉션의 불변형 자료형 및 가변형 자료형 분류와 그에 따른 생성 헬퍼 함수**
+|컬렉션|불변형(읽기 전용)|가변형|
+|:---:|:---:|:---:|
+|List|listOf|mutableListOf, arrayListOF|
+|Set|setOf|mutableSetOf, hashSetOf, linkedSetOf, sortedSetOf|
+|Map|mapOf|mutableMapOf, hashMapOf, linkedMapOf, sortedMapOf|
+
+되도록이면 읽기 전용인 불변형으로 선언할 것을 권장
+
 #### 컬렉션 인터페이스
-#### Collection 인터페이스의 멤버
-#### MutableCollection 인터페이스의 멤버 메서드
+* 가장 상위의 Iterable 인터페이스는 컬렉션이 연속적인 요소를 표현할 수 있도록 함
+* `iterator()`는 `hasNext()`와 `next()` 메서드를 가지고 요소를 순환
+* Iterable로부터 확장된 Collection 인터페이스는 불변형, 따라서 여기에서 확장된 Set과 List는 읽기 전용 컬렉션
 
-### List 활용하기
+**Collection 인터페이스의 멤버**
+|멤버|설명|
+|:---:|:---:|
+|size|컬렉션의 크기를 나타냄|
+|isEmpty()|컬렉션이 비어 있으면 true 반환|
+|contains(element: E)|특정 요소가 있으면 true 반환|
+|containsAll(elements: Collection<E>)|인자로 받아들인 컬렉션이 있다면 true 반환|
+	
+* Iterable 인터페이스 아래로 Collection 인터페이스 말고 MutableIterable 과 그 아래의 MutableCollection 인터페이스
+* 이 둘은 가변현 컬렉션을 지원하기 위해 준비된 인터페이스
+
+**MutableCollection 인터페이스의 멤버 메서드**
+|멤버 메서드|설명|
+|:---:|:---:|
+|add(element: E)|인자로 전달 받은 요소를 추가하고 true를 반환, 이미 요소가 있거나 중복이 허용되지 않으면 false를 반환|
+|remove(element: E)|인자로 저달 받은 요소를 삭제하고 true를 반환, 삭제하려는 요소가 없다면 false를 반환|
+|addAll(elements: Collection<E>)|컬렉션을 인자로 전달 받아 모든 요소를 추가하고 true를 반환, 실패하면 false를 반환|
+|removeAll(elements: Collection<E>)|컬렉션을 인자로 전달 받아 모든 요소를 삭제하고 true를 반환, 실패하면 false를 반환|
+|retainAll(elements: Collection<E>)|인자로 전달 받은 컬렉션의 요소만 보유한다. 성공하면 true를 반환, 실패하면 false를 반환|
+|clear()|컬렉션의 모든 요소를 삭제|
+
+## 09-2 List 활용하기
+> List는 순서에 따라 정렬된 요소를 가지는 컬렉션   
+> 불변형 List를 만들려면 헬퍼 함수인 `listOf()` 사용   
+> 가변형 List를 만들려면 `mutableListOf()` 사용   
+* 헬퍼 함수 : 보통 List와 같은 컬렉션은 직접 사용해 생성하지 않고 특정 함수의 도움을 통해 생성하는데 이때 사용하는 함수
+
+### 불변형 List 생성하기
 #### listOf() 함수
+**`listOf()`의 원형**
 
+|public fun <T> listOf(vararg elements: T): List<T>|
+|---|
 
+* 형식 매개변수 `<T>`는 원하는 자료형을 지정해 선언할 수 있음
+* 사용하지 않으면 `<Any>`가 기본값이며 어떤 자료형이든 혼합할 수 있음
 
+#### 컬렉션 반복하기
+* `for(item in fruits){...}` 컬렉션에서 요소를 순환하기 위해 for문을 사용할 수 있음
+* `for(index in fruits.indices) {...}` 요소의 인덱스를 통해 List에 접근하려면 컬렉션에 `.indices` 멤버를 추가하면 됨.
 
+#### emptyList() 함수
+* 비어 있는 List 생성을 위해 `emptyList<>()` 사용
+* **반드시 형식 매개변수를 지정**
+`val emptyList: List<String> = emptyList<String>()`
 
+#### listOfNotNull() 함수
+* null을 제외한 요소만 반환해 List를 구성
+`val nonNullsList: List<Int> = listOfNotNull(2, 45, 2, null, 5 ,null)`
+
+##### List의 주요 멤버 메서드
+> List는 앞에서 살펴본 Collection 인터페이스의 메서드를 오버라이딩해 구현
+
+|멤버 메서드|설명|
+|:---:|:---:|   
+|get(index: Int)|특정 인덱스를 인자로 받아 해당 요소를 반환|
+|indexOf(element: E)|인자로 받은 요소가 첫 번째로 나타나는 인덱스를 반환, 없으면 -1 반환|
+|lastIndexOf(element: E)|인자로 받은 요소가 마지막으로 나타나는 인덱스를 반환, 없으면 -1 반환|
+|listIterator()|목록에 있는 iterator를 반환|
+|subList(fromIndex: Int, toIndex: Int)|특정 인덱스의 from과 to 범위에 있는 요소 목록을 반환|
+
+### 가변형 List 생성하기
+#### 가변형 arrayListOf() 함수
+> `java.util.*` import 필요 (아마 java.util.ArrayList 인거 같음)
+* 가변형 헬퍼 함수를 사용하면 요소를 손쉽게 추가하거나 삭제할 수 있는 List 생성
+* `arrayListOf()`는 가변형 List를 생성하지만 이것의 **반환 자료형은 자바의 ArrayList**
+**`arrayListOf()의 원형`**
+|public fun <T> arrayListOf(vararg elements: T): ArrayList<T>|
+|---|
+
+#### 가변형 mutableListOf() 함수
+* 코틀린의 MutableList 인터페이스를 사용하는 헬퍼 함수 `mutableListOf()`를 통해 가변형 List 생성   
+**`mutableListOf()`의 원형**
+|public fun <T> mutableListOf(vararg elements: T): MutableList<T>|
+|---|
+
+##### 기존의 불변형 List를 가변형을 변경
+* `toMutableList()` : 기존의 List는 그대로 두고 새로운 공간을 만들어 냄
+* A라는 불변형 List에 `toMutableList()` 하게되면 A' 라는 새로운 불변형 List를 만들어내는 것 같음
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+#### List와 배열의 차이
 
 
 
