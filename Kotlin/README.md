@@ -816,10 +816,128 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 * A라는 불변형 List에 `toMutableList()` 하게되면 A' 라는 새로운 불변형 List를 만들어내는 것 같음
    
 #### List와 배열의 차이
+* Array 클래스에 의해 생성되는 배열 객체는 내부 구조상 **고정된 크기의 메모리**를 가지고 있음
+* 코틀린의 List<T>와 MutableList<T>는 인터페이스로 설계되어 있고 이것을 하위에서 특정한 자료구조로 구현
+* 따라서 해당 자료구조에 따라 성능이 달라짐
+* 예를들어 List<T>인터페이스로부터 구현한 LinkedList<T>와 ArrayList<T>는 특정 자료구조를 가지는 클래스이며 성능도 다름
+* List<T>는 Array<T> 처럼 메모리 크기가 고정된 것이 아니기 때문에 자료구조에 따라 늘리거나 줄이는 것이 가능
+* Array<T>는 제네릭 관점에서 상·하위 자료형 관계가 성립하지 않는 무변성이기 때문에 Array<Int>는 Array<Number>와 무관
+* 코틀린의 MutalbeList<T>도 무관
+* List<T>는 공변성이기 때문에 하위인 List<Int>가 List<Number>에 지정될 수 있음
+
+## 09-3 Set과 Map 활용하기
+> List : 요소의 중복 가능   
+> Set : 집합의 개념 -> 요소의 중복 불가(모든 요소가 유일(Unique))   
+> Map : 키와 값의 쌍 형태. 키는 유일, 값은 중복 가능
+### Set 생성하기
+> 헬퍼 함수인 `setOf()`를 이용해 불변형 Set 생성   
+> `mutableSetOf()` 이용해 가변형 Set 생성
+#### 불변형 setOf() 함수
+* `setOf()` 함수는 읽기 전용인 불변형 Set<T> 자료형을 반환
+
+#### 가변형 mutableSetOf() 함수
+* `mutableSetOf()` 함수로 요소의 추가 및 삭제가 가능한 집합 생성
+* `mutableSetOf()`는 MutableSet 인터페이스 자료형을 반환하는데, 내부적으로 자바의 LinkedHashSet을 만들어 냄
+
+### Set의 여러 가지 자료구조
+#### hashSetOf() 함수
+> `java.util.HashSet<T>`
+
+* 헬퍼 함수 `hashSetOf()`를 통해 **해시 테이블**에 요소를 저장할 수 있는 자바의 HashSet 컬렉션을 만듦
+* `hashSetOf()`는 자바의 HashSet을 반환
+* 불변성 선언이 없음 -> 추가 및 삭제 등의 기능을 수행 가능
+* 마찬가지로 입력 순서, 중복된 요소 무시
+* 해시값을 통해 요소를 찾아내므로 **검색 속도는 O(1)** 의 상수시간
+
+#### sortedSetOf() 함수
+> `java.util.TreeSet<T>`
+
+* `sortedSetOf()` 함수는 자바의 TreeSet 컬렉션을 **정렬된 상태**로 반환
+* **레드 블랙 트리 알고리즘** 을 사용 -> 최악의 경우에도 처리에서 일정한 시간을 보장
+* HashSet 보다 성능이 좀 떨어지고 시간이 걸리지만 검색과 정렬이 뛰어남
+* 불변성 선언이 없음 -> 추가 및 삭제 등의 기능을 수행 가능
+
+#### linkedSetOf() 함수
+> `java.util.LinkedHashSet<T>`
+
+* `linkedSetOf()` 함수는 자바의 LinkedHashSet 자료형을 반환하는 헬퍼 함수
+* 링크드 리스트 사용해 구현된 해시 테이블에 요소를 저장
+* 저장된 순서에 따라 값이 정렬
+* HashSet, TreeSet보다 느리지만 포인터 연결을 통해 메모리 저장공간을 좀 더 효율적으로 사용
+
+### Map의 활용
+> 내부적으로 자바의 Map을 이용   
+> 키와 값으로 구성된 요소를 저장. 여기서 키와 값은 모두 객체.   
+> 기존에 저장된 키와 동일한 키로 값을 저장하면 기존의 값은 없어지고 새로운 값으로 대체
+
+#### 불변형 mapOf() 함수
+* `mapOf() 함수는 불변형 Map 컬렉션을 만듦
+
+|val map: Map<키 자료형, 값 자료형> = mapOf(키 to 값[, ...])|
+|---|
+|`val langMap: Map<Int,String> = mapOf(11 to "Java", 22 to "Kotlin", 33 to "C++")`|
+
+**Map에서 사용하는 멤버 프로퍼티와 메서드**
+|멤버|설명|
+|:---:|:---:|
+|size|Map 컬렉션의 크기를 반환|
+|keys|Set의 모든 키를 반환|
+|values|Set의 모든 값을 반환|
+|isEmpty()|Map이 비어 있는지 확인하고 비어 있으면 true를, 아니면 false를 반환|
+|containsKey(key: K)|인자에 해당하는 키가 있다면 true를, 없으면 false를 반환|
+|containsValue(value: V)|인자에 해당하는 값이 있다면 true를, 없으면 false를 반환|
+|get(key: K)|키에 해당하는 값을 반환, 없으면 null을반환|
+
+#### 가변형 mutableMapOf() 함수
+* `mutableMapOf()` 함수는 추가, 삭제가 가능한 가변현 Map을 정의
+* MutableMap(K,V) 인터페이스 자료형을 반환
+* MutableMap은 MutableCollection의 내용을 상속받지 않고 **Map에서 확장**
+
+**MutableMap에서 사용하는 멤버 메서드**
+|멤버|설명|
+|:---:|:---:|
+|put(key: K, value: V)|키와 값의 쌍을 Map에 추가|
+|remove(key: K)|키에 해당하는 요소를 Map에서 제거|
+|putAll(from: Map<out K,V>)|인자로 주어진 Map 데이터를 갱신하거나 추가|
+|clear()|모든 요소를 지움|
+
+#### Map의 기타 자료구조
+* 자바의 HashMap, SortedMap, LinkedHashMap 사용 가능
+* `hashMapOf()`, `sortedMapOf()`, `linkedMapOf()`로 각각 초기화
+* SortedMap은 기본적으로 키에 대해 오름차순 정렬된 형태로 사용
+* 내부 구조는 앞서 나온 Set과 비슷하게 해시,트리,링크드리스트의 자료구조로 구현되어 있음
+
+## 09-4 컬렉션의 확장 함수
+> 기능을 기준으로 하여 몇가지 범주로 나눌 수 있음
+
+* 연산자(Operator) 기능의 메서드: 더하고 빼는 등의 기능
+* 집계(Aggregator) 기능의 메서드: 최대, 최소, 집합, 총합 등의 계산 기능
+* 검사(Check) 기능의 메서드: 요소를 검사하고 순환하는 기능
+* 필터(Filtering) 기능의 메서드: 원하는 요소를 골라내는 기능
+* 변환(Transformer) 기능의 메서드: 뒤집기, 정렬, 자르기 등의 변환 기능
+
+### 컬렉션의 연산
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***
+***
 ***
 ## 변수의 동일성 체크 (더 추가할 것)
 
@@ -834,6 +952,8 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 기본 자료형에는 자료형의 특징에 따라 equals() 함수가 이미 구현되어 있지만 커스텀 class를 만들때는 `open fun equals(other: Any?):Boolean` equals 함수를 상속받아   
 동일성을 확인해주는 구문을 **별도로 구현해야 함**
 ***
+***
+***
 
 
 
@@ -851,18 +971,38 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 
 
 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
+***
 ***
 ***
 ***
