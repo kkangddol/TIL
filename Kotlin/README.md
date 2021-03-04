@@ -1,5 +1,5 @@
-출처 : 디모의 Kotlin 강좌 (https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)   
-        Do it! 코틀린 프로그래밍
+출처 : [디모의 Kotlin 강좌](https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)   
+       **Do it! 코틀린 프로그래밍**
 
 
 「Kotlin」
@@ -406,7 +406,7 @@
 |String|네|네|
 |String?|아니오|네|
 |List|네|네|
-|List<String>|아니오|네|
+|List\<String\>|아니오|네|
 
 * 하위 클래스는 상위 클래스가 수용할 수 있음
 #### 가변성의 3가지 유형
@@ -917,9 +917,13 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 * 변환(Transformer) 기능의 메서드: 뒤집기, 정렬, 자르기 등의 변환 기능
 
 ### 컬렉션의 연산
+* [예제코드](https://www.youtube.com/channel/UCBkyj16n2snkRg1BAzpovXQ?sub_confirmation=1)
+* 일반적인 연산자인 `+`와 `-`를 사용해 컬렉션 요소를 하나씩 더하거나 뺄 수 있고
+* 컬렉션 자체를 더하거나 뺄 수 있음
+* `listOf()`, `Pair()`, `mapOf()` 등을 더하거나 빼는 방법으로 요소를 병합하거나 제거할 수 있음
 
-
-
+### 요소의 처리와 집계
+* [예제코드](https://www.youtube.com/channel/UCBkyj16n2snkRg1BAzpovXQ?sub_confirmation=1)
 
 
 
