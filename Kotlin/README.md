@@ -925,6 +925,9 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 ### 요소의 처리와 집계
 * [예제코드](https://www.youtube.com/channel/UCBkyj16n2snkRg1BAzpovXQ?sub_confirmation=1)
 
+### 검사
+### 필터
+### 변환
 
 
 
