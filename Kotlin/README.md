@@ -943,6 +943,53 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 
 ### 요소의 매핑
 
+***
+
+
+# [컬렉션 함수]
+> _list나 set,map과 같은 컬렉션 또는 배열에 일반 함수 또는 람다 함수 형태를 사용하여_   
+> _for문 없이도 아이템을 순회하며 참조하거나 조건을 걸고, 구조의 변경까지 가능한 여러가지 함수_   
+
+`for(item in collection)` for문 말고도 **코틀린의 함수형 언어의 특징을** 활용해 컬렉션 사용   
+반복문과 조건문을 사용하는 경우를 대부분 대체할 수 있다는 장점
+
+* forEach : `collection.forEach{}` 중괄호 안에서 collection의 객체들을 `it` 이라는 변수로 순서대로 참조 가능
+* filter : `collection.filter{it<4}` 중괄호 안의 조건에 맞는collection의 객체들만 반환
+* map : `collection.map{it*2}` 중괄호 안의 수식을 collection의 객체들에 적용해 반환
+* any : `collection.any{it == 0}` 하나라도 조건에 맞으면 true
+* all : `collection.all{it == 0}` 모두 조건에 맞으면 true
+* none : `collection.none{it == 0}` 하나도 조건에 맞지 않으면 true
+* first (일반함수) : `collection.first()` 컬렉션의 첫번째 아이템 반환
+* first (람다함수) : `collection.first{it>3}` 조건에 맞는 첫번째 아이템을 반환 -> **find로 대체가능**
+* last (람다함수) : `collection.last{it>3}` 조건에 맞는 마지막 아이템을 반환 -> **findLast로 대체가능**
+
+first , last 사용할때 조건에 맞는 객체가 없는경우(=컬렉션이 비어있는 경우) 문제발생 -> NoSuchElementException
+* firstOrNull : 조건에 맞는 객체가 없는경우 null을 반환
+* lastOrNull : 조건에 맞는 객체가 없는경우 null을 반환
+
+* count (일반함수) : `collection.count()` 컬렉션의 모든 아이템의 개수 반환
+* count (람다함수) : `collection.count{it>7}` 조건에 맞는 아이템의 개수 반환
+
+* associateBy : `collection.associateBy{it.name}` 객체에서 key를 추출하여 map으로 변환하는 함수   
+<img src="/Kotlin/image/associateBy.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="associateBy"></img>
+
+* groupBy : `collection.groupBy{it.birthYear}` key가 같은 아이템끼리 배열로 묶어 map으로 만드는 함수   
+<img src="/Kotlin/image/groupBy.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="groupBy"></img>
+
+* partition : `collection.partition{it.birthYear>2002}` 아이템에 조건을 걸어 **두 개의 컬렉션** 으로 나누어 줌   
+<img src="/Kotlin/image/partition.png" width="40%" height="40%" title="px(픽셀) 크기 설정" alt="partition"></img>   
+**두 컬렉션은 두 객체를 담을 수 있는 'Pair'라는 클래스 객체로 반환되므로 각각의 컬렉션을 'first' , 'second'로 참조하여 사용**   
+**또는 페어를 직접 받아줄 수 있도록 변수이름을 괄호안에 두 개 선언해주면 각각의 변수 이름으로 받을 수 있다**   
+`val(over2002, under2002) = collection.partition{it.birthYear>2002}`
+
+* flatMap : `collection.flatMap{listOf(it*3,it+3)}` 아이템마다 만들어진 컬렉션을 합쳐서 반환하는 함수
+* getOrElse : `collection.getOrElse(1){50}` 인덱스 위치()에 아이템이 있으면 아이템을 반환하고 아닌 경우 지정한 기본값{}을 반환하는 함수
+* zip : `collectionA zip collectionB` 컬렉션 두 개의 아이템을 1:1로 매칭하여 새 컬렉션을 만들어 줌   
+**1:1로 매칭하여 pair클래스의 객체로 만든후 list에 넣어 반환**  
+**이때 반환된 결과 list의 아이템의 개수는 더 작은 컬렉션을 따라가게 됨**
+
+
+***
 
 
 
