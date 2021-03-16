@@ -917,31 +917,126 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 * 변환(Transformer) 기능의 메서드: 뒤집기, 정렬, 자르기 등의 변환 기능
 
 ### 컬렉션의 연산
-* [예제코드](https://www.youtube.com/channel/UCBkyj16n2snkRg1BAzpovXQ?sub_confirmation=1)
+* [예제코드](https://github.com/rudeore333/TIL/tree/master/Kotlin/Do%20it!%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/KotlinProgramming/src/chap09)
 * 일반적인 연산자인 `+`와 `-`를 사용해 컬렉션 요소를 하나씩 더하거나 뺄 수 있고
 * 컬렉션 자체를 더하거나 뺄 수 있음
 * `listOf()`, `Pair()`, `mapOf()` 등을 더하거나 빼는 방법으로 요소를 병합하거나 제거할 수 있음
 
 ### 요소의 처리와 집계
-* [예제코드](https://www.youtube.com/channel/UCBkyj16n2snkRg1BAzpovXQ?sub_confirmation=1)
+* `forEach`, `forEachIndexed`, `onEach`, `count`, `max`, `min`, `maxBy`, `minBy`, `fold`, `reduce`, `sumBy()`
+* 뒤에 ()가 명시되지 않은 메소드들은 인자로 함수(람다식)를 받으며 인자를 주지 않으면 ()를 명시해 일반 메소드처럼 사용
 #### 요소의 순환
+* `forEach` : 각 요소를 람다식으로 처리한 후 **컬렉션을 반환하지 않음**
+* `forEachIndexed` : 각 요소를 람다식으로 처리하고 **각 컬렉션을 반환**
+
+```
+	list.forEach{print("$it")}
+	val returnedList = list.onEach{print(it)}
+```
 #### 요소의 개수 반환하기
+* `count` : 조건에 맞는 요소 개수 반환
+```
+	println(list.count())
+	println(list.count{it % 2 == 0})
+```
 #### 최댓값과 최솟값의 요소 반환하기
+* `max`
+* `min`
+* `maxBy{}` : 람다식의 결과를 기준으로 최댓값
+* `minBy{}` : 람다식의 결과를 기준으로 최솟값
 #### 각 요소에 정해진 식 적용하기
+* `fold(초깃값){}` : 초깃값과 정해진 식에 따라 처음 요소부터 끝 요소에 적용하며 값을 생성
+* `foldRight`
+* `reduce{}` : 초깃값 X. fold와 동일
+* `reduceRight`
 #### 모든 요소 합산하기
+* `sumBy` : 람다식에서 도출된 모든 요소를 합한 결과 반환
 
 ### 요소의 검사
 #### 요소의 일치 여부 검사하기
+* `all` : 모든 요소가 일치할 때 true
+* `any` : 최소한 하나 이상의 특정 요소가 일치하면 true
 #### 특정 요소의 포함 및 존재 여부 검사하기
+* `contains()` : 특정 요소가 포함되어 있으면 true
+* `containsAll()` : 모든 요소가 포함되어 있으면 true
+* `contains()`는 범위 연산자 `in`을 사용해서 요소의 포함 여부를 확인할 수도 있음
+```
+	println(list.contains(2))
+	println(2 in list)
+```
+* `none` : 람다식에 따라 검사했을 때 요소가 없으면 true
+* `isEmpty()` : 컬렉션이 비었으면 true
+* `isNotEmpty()` : 안비었으면 true
+```
+	println(list.none())
+	println(list.none{ it > 6 })
+```
 
 ### 요소의 필터와 추출
 #### 특정 요소를 골라내기
+* `filter` : 주어진 식의 조건에 따라 골라냄
+* `filterNot` : 주어진 식의 조건이 아닌것을 골라냄
+* `filterNotNull()` : null을 제외함
+* `filterIndexed` : 2개의 인자를 람다식에서 받아서 인덱스와 값에 대해 특정 수식에 맞는 조건을 골라냄
+* `filterIndexedTo(반환할 컬렉션){}` : `filterindexed`에 컬렉션으로 반환되는 기능 추가
+```
+	val mutList = list.filterIndexedTo(mutableListOf()){idx, value -> idx != 1 && value % 2 == 0}
+```
+* `filterKeys` : 키에 대한 조건에 맞는 부분을 반환
+* `filterValues` : 값에 대한 조건에 맞는 부분을 반환
+* `filterIsInstance<T>()` : 원하는 자료형의 데이터만 골라냄
 #### 특정 범위를 잘라내거나 반환하기
+* `slice()` : 특정 범위의 인덱스를 가진 List를 인자로 사용해 기존 List에서 요소들을 잘라냄
+```
+	println("slice: " + list.slice(listOf(0, 1, 2)))
+```
+* `take` : n개의 요소를 가진 List를 반환
+```
+	println(list.take(2))
+	println(list.takeLast(2))
+	println(list.takeWhile { it < 3 })
+```
 #### 특정 요소 제외하기
+* `drop` : take와는 정반대. n개의 요소를 제외하고 List를 반환
+```
+	println(list.drop(3))
+	println(list.dropWhile { it < 3 })
+	println(list.dropLastWhile { it > 3 })
+```
 #### 각 요소의 반환
+* `componentN() : 각 요소는 이것과 대응. 이것을 사용해 요소를 반환. N은 인덱스 번호가 아닌 1부터 시작하는 요소의 순서 번호.
+```
+	println(list.component1())
+```
 #### 합집합과 교집합
+* `distinct()` : 여러 중복 요소가 있는 경우 1개로 취급해 다시 컬렉션 List로 반환. **합집합과 같은 원리**
+* `intersect()` : 겹치는 요소만 골라내 List로 반환. **교집합과 같은 원리**
 
 ### 요소의 매핑
+* [예제코드](https://github.com/rudeore333/TIL/blob/master/Kotlin/Do%20it!%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/KotlinProgramming/src/chap09/section4/ExtensionMapping.kt)
+* `.map()`은 주어진 컬렉션의 요소에 일괄적으로 `.map()`에 있는 식을 적용해 새로운 컬렉션을 만들 수 있게하는 메서드
+* `forEach()`와 비슷해 보이나 주어진 컬렉션을 전혀 건드리지 않는다는 점에서 좀 더 안전
+* `map`
+* `mapIndexed`
+* `mapNotNull`
+* `flatMap` : 각 요소에 식을 적용한 후 이것을 다시 하나로 합쳐 새로운 컬렉션을 반환
+```
+	println(list.flatMap{listOf(it, 'A')})
+	val result = listOf("abc","12").flatMap(it.toList())
+	println(result)
+```
+* `groupBy` : 주어진 식에 따라 요소를 그룹화하고 이것을 다시 Map으로 반환
+```
+	val grpMap = list.groupBy { if (it % 2 == 0) "even" else "odd" }
+	println(grpMap)
+```
+
+### 요소 처리와 검색
+
+
+
+
+
 
 ***
 
