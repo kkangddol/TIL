@@ -1032,7 +1032,29 @@ println("pi = %.2f, %3d, %s".format(pi,dec,s))
 ```
 
 ### 요소 처리와 검색
+* `elementAt()` : 주어진 인덱스에 해당하는 요소를 반환. 인덱스 범위를 벗어나면 IndexOutOfOBoundsException 오류 발생.
+* `elementAtOrElse()` : 인덱스 범위를 벗어나도 식에 따라 결과를 반환
+* `elementAtOrNull()` : 인덱스 범위를 벗어나는 경우 null 반환
+```
+	println(list.elementAtOrElse(10, { 2 * it }))
+	println(list.elementAtOrElse(10) { 2 * it })
+	//인덱스가 10인 요소를 반환하고 범위를 벗어나는 경우 람다식에 따라 결과 반환. (20 반환)
+```
+* `first`
+* `last`
+* `firstOrNull`
+* `lastOrNull`
+* `indexOf()`
+* `indexOfFirst`
+* `lastIndexOf()`
+* `indexOfLast`
+* `single` : 해당 조건식에 일치하는 요소를 하나 반환 (요소가 하나 이상인 경우 예외 발생)
+* `singleOrNull` : 조건식에 일치하는 요소가 없거나 일치하는 요소가 하나 이상이면 null 반환
+### 컬렉션의 분리와 병합
 
+### 순서와 정렬
+
+## 09-5 시퀀스 활용하기
 
 
 
