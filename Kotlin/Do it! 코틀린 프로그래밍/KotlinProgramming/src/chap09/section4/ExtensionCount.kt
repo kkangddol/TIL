@@ -8,6 +8,9 @@ fun main(){
     val listWithNull = listOf(1,null,3,null,5,6)
     val listRepeated = listOf(2,2,3,4,5,5,6)
 
+    println(list.count())
+    println(list.count { it % 2 == 0 })
+
     println(list.fold("dd"){total,next -> total + next})
     println(list.fold(3){total,next -> total * next})
     println(list.fold(3.5){total,next -> total * next})
