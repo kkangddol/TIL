@@ -1,5 +1,7 @@
 출처 : [디모의 Kotlin 강좌](https://www.youtube.com/playlist?list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN)   
        **Do it! 코틀린 프로그래밍**
+       
+       앞부분도 7강 이후처럼 수정필요
 
 
 「Kotlin」
@@ -1173,6 +1175,10 @@ first , last 사용할때 조건에 맞는 객체가 없는경우(=컬렉션이 
 * 클로저의 조건
 	1. final 변수를 포획한 경우 변수 값을 람다식과 함께 저장한다.
 	2. final이 아닌 변수를 포획한 경우 변수를 특정 래퍼(wrapper)로 감싸서 나중에 변경하거나 읽을 수 있게 한다. 이때 래퍼에 대한 참조를 람다식과 함께 저장한다.
+
+
+let()
+with()
 
 
 
