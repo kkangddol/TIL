@@ -1182,27 +1182,88 @@ first , last 사용할때 조건에 맞는 객체가 없는경우(=컬렉션이 
 #### 확장 함수의 람다식 접근 방법
 |함수 이름|람다식의 접근 방법|반환 방법|
 |:---:|:---:|:---:|
-||||
+|T.let|it|block 결과|
+|T.also|it|T caller (it)|
+|T.apply|this|T caller (this)|
+|T.run 또는 run|this|block 결과|
+|with|this|Unit|
 ### let() 함수 활용하기
+**let() 표준 함수의 정의**
+|`public inline fun <T, R> T.let(block: (T) -> R): R { ... return block(this) }`|
+|:---:|
+* let() 함수는 제네릭의 확장 함수 형태이므로 어디든 적용 가능
+* 매개변수로 람다식 형태인 block이 있고 T를 매개변수로 받아 R을 반환
+* let() 함수 역시 R을 반환
+* 본문의 this는 객체 T를 가리킴 -> 람다식 결과 부분을 그대로 반환한다는 뜻
 #### 커스텀 뷰에서 let() 함수 활용하기
+> p.460
 #### null 가능성 있는 객체에서 let() 함수 활용하기
+> p.461
 #### 메서드 체이닝을 사용할 때 let() 함수 활용하기
+> p.462
 
 ### also() 함수 활용하기
+|let() 함수와 also() 함수 차이점 비교|
+|:---|
+|`public inline fun <T, R> T.let(block: (T) -> R): R = block(this)`|
+|`public inline fun <T> T.also(block: (T) -> Unit): T { block(this); return this }`|
+* let() 함수는 마지막으로 수행된 코드 블록의 결과를 반환
+* also() 함수는 블록 안의 코드 수행 결과와 상관없이 T인 객체 this를 반환
 #### 특정 단위의 동작 분리
+> p.464
 
-### aplly() 함수 활용하기
+### apply() 함수 활용하기
+|이전 함수와 비교|
+|:---|
+|`public inline fun <T, R> T.let(block: (T) -> R): R = block(this)`|
+|`public inline fun <T> T.also(block: (T) -> Unit): T { block(this); return this }`|
+|`public inline fun <T> T.apply(block: T.() -> Unit): T { block(); return this }|
+* 객체 자체인 this를 반환
+* 특정 객체를 생성하면서 함께 호출해야 하는 초기화 코드가 있는 경우 사용
+* also()와 다른점은 `T.()` 와 같은 표현에서 람다식이 확장함수로 처리된다는 것
+```
+	person.also { it.skills = "Java } //it으로 받고 생략 불가
+	person.apply { skills = "Swift" } //this로 받고 생략 가능
+```
 #### 레이아웃을 초기화할 때 apply() 함수 활용하기
+> p.467
 #### 디렉터리를 생성할 때 apply() 함수 활용하기
+> p.467
 
 ### run() 함수 활용하기
+1. 인자가 없는 익명 함수처럼 동작하는 형태
+2. 객체에서 호출하는 형태
+* 객체 없이 run() 함수를 사용하면 인자 없는 익명 함수처럼 사용
+|run()의 2가지 사용법|
+|:---|
+|`public inline fun <R> run(block: () -> R): R = return block()`|
+|`public inline fun <T ,R> T.run(blcok: T.() -> R): R = return block()`|
+* 마지막 표현식을 반환, 마지막 표현식을 구성하지 않으면 Unit 반환
+
 ### with() 함수 활용하기
+* **receiver**
+* 인자로 받는 객체를 이어지는 block의 **receiver**로 전달하며 결괏값을 반환
+* run() 함수와 기능이 거의 동일하지만 run()은 receiver가 없다
+* with() 함수에서는 receiver로 전달할 객체를 처리하므로 객체의 위치가 달라짐
+|public inline fun <T, R> with(receiver: T, block: T.() -> R): R = receiver.block()|
+|:---:|
+* 매개변수가 2개이므로 `with(){...}`와 같은 형태로 넣어줌
+* 확장 함수 형태가 아니고 단독으로 사용되는 함수
+* 세이프콜(`?.`)을 지원하지 않기 때문에 let() 함수와 같이 사용되기도 함
+* 기본적으로 Unit이 반환되지만, 필요한 경우 마지막 표현식을 반환할 수 있음
+* 
 ### use() 함수 활용하기
+* 객체를 사용한 후 `close()` 함수를 자동적으로 호출해 닫아 줌
+* 내부 구현을 보면 예외 오류 발생 여부와 상관 없이 항상 `close()`를 호출을 보장
+|public inline fun <T : Closeable?, R> T.use(block: (T) -> R): R|
+|:---:|
+
 ### 기타 함수의 활용
+> p.472
+#### takeIf() 함수와 takeUnless() 함수의 활용
 #### 시간의 측정
 #### 난수 생성하기
 
-묘?
 
 ***
 ***
@@ -1331,7 +1392,7 @@ apply, run 과의 차이점으로는 **also** , **let** 은 마치 패러미터�
 ***
 ***
 
-
+## 10-2 람다식과 DSL
 
 
 
