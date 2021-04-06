@@ -8,4 +8,4 @@ fun main(){
     PrintWriter(FileOutputStream("c:\\test\\output.txt")).use{
         it.println("hello")
     }
-}   
+}
