@@ -48,4 +48,8 @@ class MainActivity : AppCompatActivity() {
         Log.d("printStr", "${str}")
     }
 
+    fun testStringExtension() {
+        
+    }
+
 }
