@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("ForLoop", "현재 월은 ${array[index]} 입니다.")
         }
 
-        Log.d("sumSeq", "${sumSeq(3)}") 
+        Log.d("sumSeq", "${sumSeq(3)}")
 
 
         class ClassUser(name: String, age: Int)
