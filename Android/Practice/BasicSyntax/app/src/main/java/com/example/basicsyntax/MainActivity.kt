@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("ForLoop", "현재 월은 ${array[index]} 입니다.")
         }
 
-        Log.d("sumSeq", "${sumSeq(3)}")
+        Log.d("sumSeq", "${sumSeq(3)}") 
 
 
         class ClassUser(name: String, age: Int)
@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         var dataUser = DataUser("Michael", 21)
         Log.d("DataClass", "ClassUser는 ${classUser.toString()}")
         Log.d("DataClass", "DataUser는 ${dataUser.toString()}")
+
+        testStringExtension()
 
     }
 
@@ -49,7 +51,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun testStringExtension() {
-        
+        var original = "Hello"
+        var added = " Guys~"
+
+        Log.d("Extension", "added를 더한 값은 ${original.plus(added)}입니다.")
     }
 
+
 }
+fun String.plus(word: String): String { return this + word}
