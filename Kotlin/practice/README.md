@@ -107,11 +107,14 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 * [10870](https://www.acmicpc.net/problem/10870) &nbsp; [피보나치 수 5] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/10870.kt)
     > 꼬리재귀함수 한번 써봤음
 
+
+
+## 21-05-04
+> [재귀](https://www.acmicpc.net/step/11)
 * [2447](https://www.acmicpc.net/problem/10870) &nbsp; [별 찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/2447.kt)
     > 천천히 하나씩 해보자   
     > 우선 N by N 배열을 만들고 그것들 중 재귀적으로 5번째를 구멍 뚫어서 출력만 하면 될거같은데..
-    > 어렵게 생각하지 말자
-    
-* [11729](https://www.acmicpc.net/problem/10870) &nbsp; [하노이 탑 이동 순서] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/11729.kt)
+    > 어렵게 생각하지 말자   
+    > 다른 사람풀이 보고 풀음 너무 어렵게 생각했음 다시 풀어볼것
 
-## 21-02-26 ~ 21-02-27
+* [11729](https://www.acmicpc.net/problem/10870) &nbsp; [하노이 탑 이동 순서] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/11729.kt)
