@@ -118,3 +118,5 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
     > 다른 사람풀이 보고 풀음 너무 어렵게 생각했음 다시 풀어볼것
 
 * [11729](https://www.acmicpc.net/problem/10870) &nbsp; [하노이 탑 이동 순서] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/11729.kt)
+    > 아이디어는 바로 떠오르고 정리까지 끝   
+    > 코드구현에서 갈피를 못잡고 from via to 힌트 얻고 바로 해결
