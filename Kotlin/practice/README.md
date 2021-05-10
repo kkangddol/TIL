@@ -120,3 +120,7 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 * [11729](https://www.acmicpc.net/problem/10870) &nbsp; [하노이 탑 이동 순서] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Kotlin/practice/codes/11729.kt)
     > 아이디어는 바로 떠오르고 정리까지 끝   
     > 코드구현에서 갈피를 못잡고 from via to 힌트 얻고 바로 해결
+ 
+ 
+## 21-05-10
+> [브루트 포스](https://www.acmicpc.net/step/22)
