@@ -124,3 +124,5 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
  
 ## 21-05-10
 > [브루트 포스](https://www.acmicpc.net/step/22)
+* 블랙잭
+* 분해합
