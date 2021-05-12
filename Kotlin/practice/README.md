@@ -126,3 +126,6 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 > [브루트 포스](https://www.acmicpc.net/step/22)
 * 블랙잭
 * 분해합
+* 덩치
+* 체스판 다시 칠하기
+* 영화감독 숌
