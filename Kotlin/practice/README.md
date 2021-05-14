@@ -129,3 +129,6 @@ fun main(args: Array<String>) = with(Scanner(System.`in`)){
 * 덩치
 * 체스판 다시 칠하기
 * 영화감독 숌
+
+## 21-05-14
+> [바보]
