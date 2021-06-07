@@ -52,7 +52,7 @@ cin은 input stream에 대응하는 객체이다.
 https://stackoverflow.com/questions/6791520/if-cin-x-why-can-you-use-that-condition
 
 `if (cin >> x){}`
-```cin >> x;
-if (cin){}```
+``cin >> x;
+if (cin){}``
 : 첫번째 코드는 조건문에 반환된 cin객체가 들어가고 두번째 코드는 cin객체를 직접 넣는 것으로 두 코드가 서로 같은 의미임
 [[출처]](https://skku.goorm.io/qna/4241)
