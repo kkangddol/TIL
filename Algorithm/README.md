@@ -27,32 +27,46 @@ ios_base::sync_with_stdio(false)는 C와 C++의 버퍼를 분리합니다. 이�
 [[출처]](https://www.acmicpc.net/board/view/22716)
 
 ## cin의 반환형
-cin은 cin 객체를 반환하며, iostream 헤더파일 내에 이를 bool 또는 다른 타입으로 바꾸어 줄 수 있는 conversion operator가 정의되어 있다고 함.
+https://stackoverflow.com/questions/38978266/how-can-stdcin-return-a-bool-and-itself-at-the-same-time -> cin은 cin 객체를 반환하며, iostream 헤더파일 내에 이를 bool 또는 다른 타입으로 바꾸어 줄 수 있는 conversion operator가 정의되어 있다고 함.
 
-`if (std::cin >> value);`
+```cpp
+if (std::cin >> value);
+```
 : cin이 if나 while 안에 들어가면 예외적으로 operator에 의해 자동으로 bool로 바뀜.
 
-`bool b = std::cin >> value;`
+```cpp
+bool b = std::cin >> value;
+```
 : 하지만 일반적인 경우에는 형변환을 명시하지 않을 경우 operator가 실행되지 않음.
 
-`bool b = static_cast<bool>(std::cin >> value);`
+```cpp
+bool b = static_cast<bool>(std::cin >> value);
+```
 : 이때 위와 같이 변환을 명시해주면 잘 작동함
 
-cin >> (variable) 연산 자체가 cin을 반환하므로, cin >> X >> Y >> Z 는 ((cin >> X) >> Y) >> Z 와 같으며 따라서 cin>>X, cin>>Y, cin>>Z 를 순차적으로 실행하는 것과 같음을 설명.   
+https://stackoverflow.com/questions/36626896/how-does-cin-evaluate-to-true-when-inside-an-if-statement -> cin >> (variable) 연산 자체가 cin을 반환하므로, cin >> X >> Y >> Z 는 ((cin >> X) >> Y) >> Z 와 같으며 따라서 cin>>X, cin>>Y, cin>>Z 를 순차적으로 실행하는 것과 같음을 설명.   
 cin이 if나 while 안에 들어가면 operator에 의해 bool로 바뀜.
 
-cin은 input stream에 대응하는 객체이다.
+https://stackoverflow.com/questions/46073849/error-when-assigning-the-return-of-cin-somevar-to-an-istream-variable-in-c -> cin은 input stream에 대응하는 객체이다.
 
-`istream b = cin >> a;`
+```cpp
+istream b = cin >> a;
+```
 : cin이 istream 클래스의 객체임을 감안해 이런 식으로 양변의 형이 같게 코드를 짜더라도 제대로 작동하지 않는데, 이는 '=' 연산자가 우변의 객체를 좌변의 변수에 복사할 것을 요구하고 있지만 stream 클래스가 이러한 복사 기능을 지원하지 않기 때문.
 
-`bool b(cin >> a);`
+```cpp
+bool b(cin >> a);
+```
 : 이렇게 하면 가장 간결하게 cin의 return을 boolean으로 변환한 값을 b에 저장할 수 있다. 이때 b는 cin>>a 연산의 성공 여부에 대한 True/False를 담게 된다.
 
-https://stackoverflow.com/questions/6791520/if-cin-x-why-can-you-use-that-condition
 
-`if (cin >> x){}`
-``cin >> x;
-if (cin){}``
+https://stackoverflow.com/questions/6791520/if-cin-x-why-can-you-use-that-condition
+```cpp
+if (cin >> x){}
+```
+```cpp
+cin >> x;   
+if (cin){}
+```
 : 첫번째 코드는 조건문에 반환된 cin객체가 들어가고 두번째 코드는 cin객체를 직접 넣는 것으로 두 코드가 서로 같은 의미임
 [[출처]](https://skku.goorm.io/qna/4241)
