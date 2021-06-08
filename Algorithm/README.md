@@ -173,7 +173,7 @@ quick sort(퀵 정렬)을 기반으로 함수가 구현되어있어, 평균 시�
   
 [[출처]](https://luyin.tistory.com/334)
 
-## 배열 채우기
+## 배열 초기화
 ```cpp
 int arr[100] = {0,};
 ```
@@ -210,3 +210,28 @@ int n = 0;
 n = c - '0';
 ```
 
+## string 메소드 잘 활용하기
+
+## transform 함수
+\<algorithm\>에 정의되어있음.
+```cpp
+template <class InputIt, class OutputIt, class UnaryOperation>
+OutputIt transform(InputIt first1, InputIt last1, OutputIt d_first,
+                   UnaryOperation unary_op);  // (1)
+                   
+template <class InputIt1, class InputIt2, class OutputIt, class BinaryOperation>
+OutputIt transform(InputIt1 first1, InputIt1 last1, InputIt2 first2,
+                   OutputIt d_first, BinaryOperation binary_op);  // (2)
+                   
+template <class ExecutionPolicy, class ForwardIt1, class ForwardIt2,
+          class ForwardIt3, class BinaryOperation>
+ForwardIt3 transform(ExecutionPolicy&& policy, ForwardIt1 first1,
+                     ForwardIt1 last1, ForwardIt2 first2, ForwardIt3 d_first,
+                     BinaryOperation binary_op);  // (3)
+```
+
+```cpp
+transform(c.begin(), c.end(), c.begin(), (int(*)(int))toupper);
+```
+
+[[출처]](https://modoocode.com/275)
