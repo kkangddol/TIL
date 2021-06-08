@@ -21,10 +21,57 @@
 # C++
 ## C++ 빠른 입출력
 아래 얘기는 cin, cout을 쓸 때의 얘기지, scanf/prinf로 입출력을 하고자 하신다면 그냥 쓰시면 됩니다. scanf/printf는 충분히 빠릅니다.   
+
 endl은 개행문자를 출력할 뿐만 아니라 출력 버퍼를 비우는 역할까지 합니다. 그래서 출력한 뒤 화면에 바로 보이게 할 수 있는데, 그 버퍼를 비우는 작업이 매우 느립니다. 게다가 온라인 저지에서는 화면에 바로 보여지는 것은 중요하지 않고 무엇이 출력되는가가 중요하기 때문에 버퍼를 그렇게 자주 비울 필요가 없습니다. 그래서 endl을 '\n'으로 바꾸는 것만으로도 굉장한 시간 향상이 나타납니다.   
+
 cin.tie(NULL)은 cin과 cout의 묶음을 풀어 줍니다. 기본적으로 cin으로 읽을 때 먼저 출력 버퍼를 비우는데, 마찬가지로 온라인 저지에서는 화면에 바로 보여지는 것이 중요하지 않습니다. 입력과 출력을 여러 번 번갈아서 반복해야 하는 경우 필수적입니다.   
+
 ios_base::sync_with_stdio(false)는 C와 C++의 버퍼를 분리합니다. 이것을 사용하면 cin/cout이 더 이상 stdin/stdout과 맞춰 줄 필요가 없으므로 속도가 빨라집니다. 단, 버퍼가 분리되었으므로 cin과 scanf, gets, getchar 등을 같이 사용하면 안 되고, cout과 printf, puts, putchar 등을 같이 사용하면 안 됩니다.   
+
 [[출처]](https://www.acmicpc.net/board/view/22716)
+
+## 소수점 자릿수 조절
+```cpp
+const double dNum = 1234.56789;
+
+// 1
+cout << dNum << endl;
+ 
+// 2
+cout.precision(5);
+cout << dNum << endl;
+ 
+// 3
+cout << fixed;
+cout.precision(6);
+cout << dNum << endl;
+ 
+// 4
+cout.unsetf(ios::fixed);
+cout << dNum << endl;
+ 
+// 5
+cout.setf(ios::fixed);
+cout.precision(5);
+cout << dNum << endl;
+```
+1) 아무런 설정 없이 출력했을 때, 전체 자릿수가 6으로 고정되는 것을 알 수 있다.   
+C++ 역시 출력할 때 자동으로 반올림되는 것을 알 수 있다.   
+
+2) 자릿수를 조정하는 함수이다.   
+precision(5) = 전체 자릿수를 5로 조절했기 때문에 1234.6이 출력된 것을 알 수 있다.   
+
+3) "cout << fixed"라는 표현은 소숫점 아래 값을 고정하는 표현이다.   
+즉, cout << fixed 이후에 precision(6)을 입력하면 소숫점 아래를 6으로 고정한다.   
+
+4), 5)   
+"cout << fixed"라는 표현은 cout.setf(ios::fixed); 로 사용할 수도 있다.   
+setf와 반대되는 표현이 unsetf이다. (설정 해제)   
+3번에서 소수점 아래 자릿수를 6으로 고정했고   
+4번에서 이 설정을 해제하고   
+5번에서 소수점 아래 자릿수를 5로 고정했다.   
+
+[[출처]](https://semaph.tistory.com/7)
 
 ## cin의 반환형
 https://stackoverflow.com/questions/38978266/how-can-stdcin-return-a-bool-and-itself-at-the-same-time -> cin은 cin 객체를 반환하며, iostream 헤더파일 내에 이를 bool 또는 다른 타입으로 바꾸어 줄 수 있는 conversion operator가 정의되어 있다고 함.
