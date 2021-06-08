@@ -18,7 +18,7 @@
 
 ## [2021-01-31 issue]
   > 재귀에 
-
+# C++
 ## C++ 빠른 입출력
 아래 얘기는 cin, cout을 쓸 때의 얘기지, scanf/prinf로 입출력을 하고자 하신다면 그냥 쓰시면 됩니다. scanf/printf는 충분히 빠릅니다.   
 endl은 개행문자를 출력할 뿐만 아니라 출력 버퍼를 비우는 역할까지 합니다. 그래서 출력한 뒤 화면에 바로 보이게 할 수 있는데, 그 버퍼를 비우는 작업이 매우 느립니다. 게다가 온라인 저지에서는 화면에 바로 보여지는 것은 중요하지 않고 무엇이 출력되는가가 중요하기 때문에 버퍼를 그렇게 자주 비울 필요가 없습니다. 그래서 endl을 '\n'으로 바꾸는 것만으로도 굉장한 시간 향상이 나타납니다.   
@@ -70,3 +70,32 @@ if (cin){}
 ```
 : 첫번째 코드는 조건문에 반환된 cin객체가 들어가고 두번째 코드는 cin객체를 직접 넣는 것으로 두 코드가 서로 같은 의미임   
 [[출처]](https://skku.goorm.io/qna/4241)
+
+
+## \<algorithm\> 헤더파일
+```cpp
+template <typename T>
+void sort(T start, T end);
+```
+```cpp
+template <typename T>
+void sort(T start, T end, Compare comp);
+```
+sort 알고리즘은 <algorithm> 헤더파일에 속해있습니다.   
+
+sort(start, end)를 이용하여 [start, end) 의 범위에 있는 인자(element)를 오름차순(default)으로 정렬해주는 함수 입니다.   
+start를 포함하고 end를 포함하지 않는 구간. (iterator를 생각하면됩니다.)   
+
+quick sort(퀵 정렬)을 기반으로 함수가 구현되어있어, 평균 시간복잡도는 n log n 입니다.   
+따로 quick sort를 구현할 필요 없이 C++ STL에서 제공해주는 sort 함수를 이용하면 편리하게 정렬 할 수 있습니다.   
+  
+3번째 인자를 넣지 않으면 default로 오름차순으로 정렬이 됩니다.   
+3번째 인자에 사용자가 정의한 함수를 기준으로 정렬을 할 수 있습니다. (이항조건자를 이용할 수도 있습니다.)   
+  
+* `sort(arr, arr+n);`
+* `sort(v.begin(), v.end());`
+* `sort(v.begin(), v.end(), compare);`\t//사용자 정의 함수 사용
+* `sort(v.begin(), v.end(), greater<자료형>());`\t//내림차순 (Descending order)
+* `sort(v.begin(), v.end(), less<자료형>());`\t//오름차순 (default = Ascending order)
+
+[[출처]](https://blockdmask.tistory.com/178)
