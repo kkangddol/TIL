@@ -4,19 +4,19 @@
 using namespace std;
 
 int measure(int height, int width, vector<int> blockHeights) {
-	int pre_wall;
+	int pre_block;
 	int amountOfWater = 0;
 	for (int waterHeight = 1; waterHeight <= height; waterHeight++) {
-		pre_wall = -1;
+		pre_block = -1;
 		for (int thisBlock = 0; thisBlock < width; thisBlock++) {
 			if (blockHeights[thisBlock] >= waterHeight) {
-				if (pre_wall == -1) {
-					pre_wall = thisBlock;
+				if (pre_block == -1) {
+					pre_block = thisBlock;
 					continue;
 				}
 				else {
 					amountOfWater += thisBlock - pre_wall - 1;
-					pre_wall = thisBlock;
+					pre_block = thisBlock;
 				}
 			}
 		}
