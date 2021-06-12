@@ -23,23 +23,17 @@ public:
 	bool operator<(Edge& edge) {
 		return this->weight < edge.weight;
 	}
-	bool operator<=(Edge& edge) {
-		return this->weight <= edge.weight;
-	}
 };
 
 int getParent(int vertex) {
 	if (vertexParent[vertex] == vertex)
 		return vertex;
 	else
-		return getParent(vertexParent[vertex]);
+		return vertexParent[vertex] = getParent(vertexParent[vertex]);
 }
 
 int unionEdge(Edge &e) {
-	if(e.vertexA < e.vertexB)
-		vertexParent[e.vertexB] = e.vertexA;
-	else
-		vertexParent[e.vertexA] = e.vertexB;
+	vertexParent[vertexParent[e.vertexA]] = vertexParent[e.vertexB];
 	return e.weight;
 }
 
