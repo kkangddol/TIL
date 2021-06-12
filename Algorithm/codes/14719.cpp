@@ -15,7 +15,7 @@ int measure(int height, int width, vector<int> blockHeights) {
 					continue;
 				}
 				else {
-					amountOfWater += thisBlock - pre_wall - 1;
+					amountOfWater += thisBlock - pre_block - 1;
 					pre_block = thisBlock;
 				}
 			}
