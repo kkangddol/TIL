@@ -264,6 +264,6 @@ transform(c.begin(), c.end(), c.begin(), (int(*)(int))toupper);
 
 ## 포인터와 레퍼런스 변수의 차이
 ### pass by reference
-* [2447](https://www.acmicpc.net/problem/2941) &nbsp; [별찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/2447.cpp)
+* [2447](https://www.acmicpc.net/problem/2447) &nbsp; [별찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/2447.cpp)
 
 [[출처]](https://blog.naver.com/dkdlfjq31/222307500815)
