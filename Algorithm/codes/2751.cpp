@@ -1,69 +1,58 @@
-#include <iostream>
+#include<iostream>
 
 using namespace std;
 
-int* merge(int* leftArr, int* rightArr, int leftIndex, int middleIndex, int rightIndex) {
-	int* mergedArr = new int[rightIndex - leftIndex + 1];
-	int index = 0;
 
-	int leftCursor = 0;
-	int rightCursor = 0;
 
-	int leftSize = middleIndex - leftIndex + 1;
-	int rightSize = rightIndex - middleIndex;
+int arr[1000001];
+int ans[1000001];
 
-	while (leftCursor <= leftSize && rightCursor <= rightSize) {
-		if (leftArr[leftCursor] < rightArr[rightCursor]) {
-			mergedArr[index++] = leftArr[leftCursor++];
-		}
-		else {
-			mergedArr[index++] = rightArr[rightCursor++];
-		}
+void merge(int left, int right) {
+	int mid = (left + right) / 2;
+	int index = left;
+	int L_index = left;
+	int R_index = mid + 1;
+	while (L_index <= mid && R_index <= right) {
+		int temp;
+		if (ans[L_index] < ans[R_index])
+			temp = ans[L_index++];
+		else
+			temp = ans[R_index++];
+
+		arr[index++] = temp;
 	}
-
-	while (leftCursor <= leftSize) {
-		mergedArr[index++] = leftArr[leftCursor++];
+	while (L_index <= mid) {
+		arr[index++] = ans[L_index++];
 	}
-	while (rightCursor <= rightSize) {
-		mergedArr[index++] = rightArr[rightCursor++];
+	while (R_index <= right) {
+		arr[index++] = ans[R_index++];
 	}
-
-	return mergedArr;
+	for (int i = left; i <= right; i++)
+		ans[i] = arr[i];
 }
 
-int* mergeSort(int* arr, int leftIndex, int rightIndex) {
-	if (leftIndex == rightIndex)
-		return &arr[leftIndex];
-
-	int left = leftIndex;
-	int middle = (rightIndex + leftIndex) / 2;
-	int right = rightIndex;
-
-	int* leftArr = mergeSort(arr, left, middle);
-	int* rightArr = mergeSort(arr, middle + 1, right);
-
-	int* answer = merge(leftArr, rightArr, left, middle, right);
-
-	return answer;
+void mergesort(int left, int right) {
+	if (left == right) {
+		ans[left] = arr[left];
+		return;
+	}
+	mergesort(left, (left + right) / 2);
+	mergesort((left + right) / 2 + 1, right);
+	merge(left, right);
 }
 
 int main() {
+
 	int n;
 	cin >> n;
-
-	int* arr = new int[n];
 	for (int i = 0; i < n; i++) {
 		int temp;
-		cin >> temp;
+		scanf("%d", &temp);
 		arr[i] = temp;
 	}
+	mergesort(0, n - 1);
 
-	int* answer = mergeSort(arr, 0, n - 1);
+	for (int i = 0; i < n; i++)
+		printf("%d\n", arr[i]);
 
-	for (int i = 0; i < n; i++) {
-		cout << answer[i] << endl;
-	}
-
-
-	return 0;
 }
