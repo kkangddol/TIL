@@ -267,3 +267,19 @@ transform(c.begin(), c.end(), c.begin(), (int(*)(int))toupper);
 * [2447](https://www.acmicpc.net/problem/2447) &nbsp; [별찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/2447.cpp)
 
 [[출처]](https://blog.naver.com/dkdlfjq31/222307500815)
+
+
+## 정렬
+### Counting Sort
+Counting Sort 알고리즘의 시간복잡도는 O(n) 으로 Quick Sort보다 훨씬 유리해보입니다. 그러나 세상에 공짜는 없다는 말처럼 Counting Sort는 대부분의 상황에서 엄청난 메모리 낭비를 야기할 수 있습니다.
+
+누적합 배열에 대한 접근을 O(1)에 달성하기 위해 정렬할 배열에 포함된 숫자의 최댓값 만큼의 메모리를 필요로 합니다. 아까 추가로 예시든  배열에 Counting Sort 알고리즘으로 정렬하기 위해서는 누적합 배열의 길이를 100으로 잡는 낭비를 해야합니다. 만약 배열에 최댓값으로 10억이 포함되어 있다면 엄청난 낭비가 되겠죠.
+
+따라서 Counting Sort는 위에서든 예시처럼
+
+정렬하는 숫자가 특정한 범위(위 예시 : 0~5) 안에 있을 때 사용하게 됩니다.
+Counting Sort를 대표적으로 활용하는 사례는 26개의 알파벳으로 이루어진 문자열에서 Suffix Array를 얻는 경우인데 이때 Counting Sort를 사용하기 때문에 일반적인 Sort를 사용해서 Suffix Array를 얻때 시간복잡도 보다 빠른 에 Suffix Array를 얻는 것이 가능합니다.
+
+
+
+출처: https://bowbowbow.tistory.com/8 [멍멍멍]
