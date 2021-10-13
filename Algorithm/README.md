@@ -271,6 +271,8 @@ transform(c.begin(), c.end(), c.begin(), (int(*)(int))toupper);
 
 ## 정렬
 ### Counting Sort
+* [10989](https://www.acmicpc.net/problem/2941) &nbsp; [수 정렬하기 3] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/10989.cpp)
+
 Counting Sort 알고리즘의 시간복잡도는 O(n) 으로 Quick Sort보다 훨씬 유리해보입니다. 그러나 세상에 공짜는 없다는 말처럼 Counting Sort는 대부분의 상황에서 엄청난 메모리 낭비를 야기할 수 있습니다.
 
 누적합 배열에 대한 접근을 O(1)에 달성하기 위해 정렬할 배열에 포함된 숫자의 최댓값 만큼의 메모리를 필요로 합니다. 아까 추가로 예시든  배열에 Counting Sort 알고리즘으로 정렬하기 위해서는 누적합 배열의 길이를 100으로 잡는 낭비를 해야합니다. 만약 배열에 최댓값으로 10억이 포함되어 있다면 엄청난 낭비가 되겠죠.
