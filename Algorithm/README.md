@@ -284,7 +284,7 @@ Counting Sort를 대표적으로 활용하는 사례는 26개의 알파벳으로
 
 출처: https://bowbowbow.tistory.com/8 [멍멍멍]
 
-### stable sort , unstable sort
+### stable sort , unstable sort (입력된 순서를 유지시킬 때!)
 
 ```cpp
 sort()
