@@ -291,11 +291,11 @@ sort()
 stable_sort()
 ```
 
-quick sort는 unstable sort
-merge sort는 stable sort
-
-stable sort에서 더 많은 코스트가 발생한다.
-
+quick sort는 unstable sort   
+merge sort는 stable sort   
+stable sort에서 더 많은 코스트가 발생한다.   
 
 
+## vector
+### unique() 중복제거
 
