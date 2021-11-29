@@ -282,6 +282,23 @@ Counting Sort 알고리즘의 시간복잡도는 O(n) 으로 Quick Sort보다 �
 정렬하는 숫자가 특정한 범위(위 예시 : 0~5) 안에 있을 때 사용하게 됩니다.
 Counting Sort를 대표적으로 활용하는 사례는 26개의 알파벳으로 이루어진 문자열에서 Suffix Array를 얻는 경우인데 이때 Counting Sort를 사용하기 때문에 일반적인 Sort를 사용해서 Suffix Array를 얻때 시간복잡도 보다 빠른 에 Suffix Array를 얻는 것이 가능합니다.
 
-
-
 출처: https://bowbowbow.tistory.com/8 [멍멍멍]
+
+### stable sort , unstable sort (입력된 순서를 유지시킬 때!)
+
+```cpp
+sort()
+stable_sort()
+```
+
+quick sort는 unstable sort   
+merge sort는 stable sort   
+stable sort에서 더 많은 코스트가 발생한다.   
+
+### lower bound , upper bound
+
+
+
+## vector
+### unique() 중복제거
+
