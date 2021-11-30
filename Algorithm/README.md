@@ -297,6 +297,8 @@ stable sort에서 더 많은 코스트가 발생한다.
 
 ### lower bound , upper bound
 
+이진탐색으로 좌표압축 해결해보기
+
 
 
 ## vector
