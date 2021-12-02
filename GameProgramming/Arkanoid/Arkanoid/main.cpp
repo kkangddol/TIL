@@ -34,6 +34,13 @@ int main() {
 			if (e.type == Event::Closed)
 				app.close();
 		}
+
+		sBall.move(dx, dy);
+
+		Vector2f b = sBall.getPosition();
+		if (b.x < 0 || b.x+10 > 520) dx = -dx;
+		if (b.y < 0 || b.y+10 > 450) dy = -dy;
+
 		app.clear();
 		app.draw(sBackground);
 		app.draw(sBall);
