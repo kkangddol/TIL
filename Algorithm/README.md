@@ -295,9 +295,18 @@ quick sort는 unstable sort
 merge sort는 stable sort   
 stable sort에서 더 많은 코스트가 발생한다.   
 
+### 피봇 활용하기
+* [18870](https://www.acmicpc.net/problem/2941) &nbsp; [좌표압축] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/18870.cpp)
+
+피봇하나 잡고 쭉 보는방식도 활용할것.
+
+https://codecollector.tistory.com/688
+
+거의 그대로 베낀 수준이니까 스스로 다시 풀어보고 다른 방법도 생각해보고 빡치니까
+
 ### lower bound , upper bound
 
-이진탐색으로 좌표압축 해결해보기
+
 
 
 
