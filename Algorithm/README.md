@@ -307,9 +307,9 @@ https://codecollector.tistory.com/688
 ### lower bound , upper bound
 
 
-
-
-
 ## vector
 ### unique() 중복제거
+
+## 백트래킹
+> 그냥 대가리 박치기 하는데 어떻게 구성해야되는지 모르겠다
 
