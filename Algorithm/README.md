@@ -311,5 +311,6 @@ https://codecollector.tistory.com/688
 ### unique() 중복제거
 
 ## 백트래킹
-> 그냥 대가리 박치기 하는데 어떻게 구성해야되는지 모르겠다
+### N-Queen
+* [9663](https://www.acmicpc.net/problem/9663) &nbsp; [N-Queen] &nbsp;&nbsp; [:memo:](https://github.com/rudeore333/TIL/blob/master/Algorithm/SolvingProcess/N-Queen) &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/9663.cpp)
 
