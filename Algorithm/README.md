@@ -309,6 +309,8 @@ https://codecollector.tistory.com/688
 
 ## vector
 ### unique() 중복제거
+### 특정 원소 지우기
+벡터이름.erase(remove(벡터이름.begin(), 벡터이름.end(), 지우고 싶은 원소), v.end());
 
 ## 백트래킹
 ### N-Queen
