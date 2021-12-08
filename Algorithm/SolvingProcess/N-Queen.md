@@ -15,4 +15,52 @@
 
 ##### 문제발생 2
 > 2차원배열을 사용하므로 N이 7만 넘어가도 답을 내놓는데 시간이 너무 오래 걸림.   
-> **해결방법** -> 최적화 또는 2차원배열방법 폐기.
+> **해결방법** -> 최적화 또는 2차원배열방법 폐기. -> 1차원 배열로 변경
+
+**1차원 배열 코드 ver1**   
+아직 정답은 틀림.
+
+```cpp
+#include <iostream>
+#include <math.h>
+#include <vector>
+using namespace std;
+
+int chessCol[15] = { 0, };
+
+int n, ans = 0;
+
+void recur(int order) {
+	if (order > n) {
+		ans++;
+		return;
+	}
+
+	vector<int> skipCase;
+	for (int i = 1; i <= n; i++)
+		skipCase.push_back(i);
+	
+	for (int i = 1; i <= n; i++) {
+		if (chessCol[i] != 0) {
+			skipCase.erase(remove(skipCase.begin(), skipCase.end(), chessCol[i]), skipCase.end());
+			for (int j = 1; j <= n; j++) {
+				//i,chessColl[i] <> order,j
+				if (abs(i - order) == abs(chessCol[i] - j))
+					skipCase.erase(remove(skipCase.begin(), skipCase.end(), j), skipCase.end());
+			}
+		}	
+	}
+
+	vector<int>::iterator iter;
+	for (iter = skipCase.begin(); iter != skipCase.end(); iter++) {
+		chessCol[order] = *iter;
+		recur(order + 1);
+	}
+}
+
+int main() {
+	cin >> n;
+	recur(1);
+	cout << ans;
+}
+```
