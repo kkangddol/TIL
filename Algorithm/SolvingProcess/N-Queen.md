@@ -67,6 +67,9 @@ int main() {
 }
 ```
 
+##### 1차원 배열 코드 ver2
+> 통과.   
+> 현재 배치한 퀸의 조건이 맞는지 판별하는 isCool() 함수의 조건이 하나가 부족해서 전부 false를 반환하는 실수 수정.   
 
 ```
 #include <iostream>
@@ -80,6 +83,7 @@ int n, ans = 0;
 bool isCool(int col, int row) {
 	for (int i = 1; i <= n; i++) {
 		if (col == i) continue;
+		if (chessCol[i] == 0) continue;
 		if (chessCol[i] == row) return false;
 		if (abs(i - col) == abs(chessCol[i] - row)) return false;
 	}
@@ -96,6 +100,7 @@ void recur(int order) {
 		chessCol[order] = row;
 		if (isCool(order, row))
 			recur(order + 1);
+		chessCol[order] = 0;
 	}
 
 }
@@ -107,3 +112,8 @@ int main() {
 }
 ```
 
+
+### 결론
+
+* 아직까지는 백트래킹이라는 것이 확 와닿지 않음.
+* 그냥 완전탐색 돌리는데 조건 안맞으면 걍 버려버리고 진행하는 DFS를 돌리는 느낌..?
