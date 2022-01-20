@@ -1,3 +1,4 @@
+# △ 2022/01/21  꼭 다시 풀어볼것
 # 가장 긴 증가하는 부분수열(LIS)
 ## 유형 : 동적계획법 (DP)
 * [11053](https://www.acmicpc.net/problem/11053) [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/11053.cpp)
@@ -62,9 +63,43 @@ int main() {
 ```
 
 #### 접근방법2
-> index 0 부터 진행하면서 큰수가 나오면 계속 카운트, 작거나 같은수가 나오면 재귀호출한 뒤 return값으로 카운트값을 비교.   
-> 분기가 된 지점까지 카운트 했을때 작거나 같으면 버리고 크면 그 친구의 카운트를 가져감.
+> 맨 앞에서 부터 길이가 N인 수열의 LIS를 메모이제이션 게속 해나가는것.   
+> 10 20 10 30 20 50 이라 하면 {10} 의 LIS, {10, 20} 의 LIS, {10, 20, 10} 의 LIS 를 계속해서 저장..   
+> 이를 반복하면 {10, 20, 10, 30, 20, 50} 의 LIS도 쉽게 찾을 수 있음.
 
 ##### 코드
 ```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int n;
+int memo[1000];
+int arr[1000];
+
+int main() {
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> arr[i];
+
+	int temp = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j <= i; j++) {
+			if (i == j) {
+				memo[i] = temp + 1;
+				temp = 0;
+				break;
+			}
+
+			if (arr[j] < arr[i] && temp < memo[j])
+				temp = memo[j];
+		}
+	}
+
+	cout << *max_element(memo, memo + n);
+}
 ```
+
+### 결론
+풀이는 도움받았기 때문에 다시 꼭 풀어볼 것.   
+그리고 이 풀이 방법 말고 내가 생각하는 방법도 꼭 찾아낼 것.
