@@ -164,7 +164,7 @@ quick sort(퀵 정렬)을 기반으로 함수가 구현되어있어, 평균 시�
 [[출처]](https://choryeonworkshop.tistory.com/119)
 
 ### \<string\> 메소드들 (find, replace 등)
-* [2941](https://www.acmicpc.net/problem/2941) &nbsp; [크로아티아 알파벳] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/2941.cpp)
+* [2941](https://www.acmicpc.net/problem/2941) &nbsp; [크로아티아 알파벳] &nbsp;&nbsp; [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/2941.cpp)
 
 
 만약에 문자열을 찾는데 성공하였다면, 해당 문자열의 시작 위치 를 반환하고, 찾지 못한다면 npos 를 리턴한다.   
@@ -264,14 +264,14 @@ transform(c.begin(), c.end(), c.begin(), (int(*)(int))toupper);
 
 ## 포인터와 레퍼런스 변수의 차이
 ### pass by reference
-* [2447](https://www.acmicpc.net/problem/2447) &nbsp; [별찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/2447.cpp)
+* [2447](https://www.acmicpc.net/problem/2447) &nbsp; [별찍기 - 10] &nbsp;&nbsp; [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/2447.cpp)
 
 [[출처]](https://blog.naver.com/dkdlfjq31/222307500815)
 
 
 ## 정렬
 ### Counting Sort
-* [10989](https://www.acmicpc.net/problem/2941) &nbsp; [수 정렬하기 3] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/10989.cpp)
+* [10989](https://www.acmicpc.net/problem/2941) &nbsp; [수 정렬하기 3] &nbsp;&nbsp; [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/10989.cpp)
 
 Counting Sort 알고리즘의 시간복잡도는 O(n) 으로 Quick Sort보다 훨씬 유리해보입니다. 그러나 세상에 공짜는 없다는 말처럼 Counting Sort는 대부분의 상황에서 엄청난 메모리 낭비를 야기할 수 있습니다.
 
@@ -296,7 +296,7 @@ merge sort는 stable sort
 stable sort에서 더 많은 코스트가 발생한다.   
 
 ### 피봇 활용하기
-* [18870](https://www.acmicpc.net/problem/2941) &nbsp; [좌표압축] &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/18870.cpp)
+* [18870](https://www.acmicpc.net/problem/2941) &nbsp; [좌표압축] &nbsp;&nbsp; [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/18870.cpp)
 
 피봇하나 잡고 쭉 보는방식도 활용할것.
 
@@ -314,5 +314,5 @@ https://codecollector.tistory.com/688
 
 ## 백트래킹
 ### N-Queen
-* [9663](https://www.acmicpc.net/problem/9663) &nbsp; [N-Queen] &nbsp;&nbsp; [:memo:](https://github.com/rudeore333/TIL/blob/master/Algorithm/SolvingProcess/N-Queen) &nbsp;&nbsp; [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/9663.cpp)
+* [9663](https://www.acmicpc.net/problem/9663) &nbsp; [N-Queen] &nbsp;&nbsp; [:memo:](https://github.com/knemo333/TIL/blob/master/Algorithm/SolvingProcess/N-Queen) &nbsp;&nbsp; [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/9663.cpp)
 
