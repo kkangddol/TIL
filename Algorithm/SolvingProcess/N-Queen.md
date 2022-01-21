@@ -1,6 +1,6 @@
 # N-Queen
 ## 유형 : Back Tracking
-* [9663](https://www.acmicpc.net/problem/9663) [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/9663.cpp)
+* [9663](https://www.acmicpc.net/problem/9663) [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/9663.cpp)
 
 
 ### 문제

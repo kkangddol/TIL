@@ -1,7 +1,7 @@
 # △ 2022/01/21  꼭 다시 풀어볼것
 # 가장 긴 증가하는 부분수열(LIS)
 ## 유형 : 동적계획법 (DP)
-* [11053](https://www.acmicpc.net/problem/11053) [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/11053.cpp)
+* [11053](https://www.acmicpc.net/problem/11053) [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/11053.cpp)
 
 
 ### 문제

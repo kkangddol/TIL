@@ -1,7 +1,7 @@
 # 중요문제!!!!!!!!!!!!!
 # RGB거리
 ## 유형 : 동적계획법 (DP)
-* [1149](https://www.acmicpc.net/problem/1149) [:page_facing_up:](https://github.com/rudeore333/TIL/blob/master/Algorithm/codes/1149.cpp)
+* [1149](https://www.acmicpc.net/problem/1149) [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/1149.cpp)
 
 
 ### 문제
