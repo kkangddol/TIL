@@ -1,23 +1,27 @@
 #include<iostream>
+#include<vector>
 #include<algorithm>
 using namespace std;
 
 int main() {
-	string str1, str2;
-	cin >> str1 >> str2;
+	int n;
+	int arr[100000] = { 0, };
+	vector<int> memo;
+	
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> arr[i];
 
-	int arr[1001][1001] = { 0, };
-
-	for (int i = 0; i < str1.size(); i++) {
-		for (int j = 0; j < str2.size(); j++) {
-			if (str2[j] == str1[i]) {
-				arr[i + 1][j + 1] = arr[i][j] + 1;
-			}
-			else {
-				arr[i + 1][j + 1] = max(arr[i][j + 1], arr[i + 1][j]);
-			}
+	for (int i = 0; i < n; i++) {
+		if (memo.size() == 0) {
+			memo.push_back(arr[i]);
+			continue;
+		}
+		if (memo[i - 1] > 0)
+			memo.push_back(memo[i - 1] + arr[i]);
+		else {
+			memo.push_back(arr[i]);
 		}
 	}
-
-	cout << arr[str1.size()][str2.size()];
+	cout << *max_element(memo.begin(), memo.end());
 }
