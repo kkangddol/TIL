@@ -24,6 +24,12 @@
 
 ## 크루스칼, 유니온파인드
 
+## DP
+### LIS
+### LCS
+### 연속합
+### 냅색
+
 
 
 ------------
@@ -316,3 +322,7 @@ https://codecollector.tistory.com/688
 ### N-Queen
 * [9663](https://www.acmicpc.net/problem/9663) &nbsp; [N-Queen] &nbsp;&nbsp; [:memo:](https://github.com/knemo333/TIL/blob/master/Algorithm/SolvingProcess/N-Queen) &nbsp;&nbsp; [:page_facing_up:](https://github.com/knemo333/TIL/blob/master/Algorithm/codes/9663.cpp)
 
+
+## algorithm 헤더 sort
+세번째 인자로 greater<자료형>() 을 넣는것으로 내림차순으로 정렬 가능.   
+이것이 좀 더 개발자의 의도를 확실하게 보여주므로 rbegin, rend 사용하는 것보다 좋음.
