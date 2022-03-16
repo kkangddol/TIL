@@ -1,37 +1,37 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
 int main() {
-	int n, k;
-	vector<pair<int, int>> things; //first == wegiht , second == value
-	things.push_back(make_pair(-1, -1));
-	int valueMemo[101][100001] = {0,};
-	
-	cin >> n >> k;
-	
+	int n;
+	int cnt = 0;
+	int beginPivot = 0, endPivot = 0;
+	cin >> n;
+
+	vector<pair<int, int>> meetings; //first == beginTime, second == endTime;
 	for (int i = 0; i < n; i++) {
-		int tempWeight, tempValue;
-		cin >> tempWeight >> tempValue;
-		things.push_back(make_pair(tempWeight, tempValue));
+		int beginTemp, endTemp;
+		cin >> beginTemp >> endTemp;
+		meetings.push_back(make_pair(beginTemp, endTemp));
 	}
 
-	for (int i = 1; i <= n; i++) {
-		for (int j = 1; j <= k; j++) {
-			if (things[i].first > j)
-				valueMemo[i][j] = valueMemo[i - 1][j];
-			else {
-				if (j - things[i].first > 0) {
-					valueMemo[i][j] = max(things[i].second + valueMemo[i - 1][j - things[i].first], valueMemo[i - 1][j]);
-				}
-				else {
-					valueMemo[i][j] = max(things[i].second, valueMemo[i - 1][j]);
-				}
+	bool isFinished = false;
+	while (!isFinished) {
+		vector<pair<int, int>>::iterator iter;
+
+		isFinished = true;
+		for (iter = meetings.begin(); iter != meetings.end(); iter++) {
+			if ((*iter).second == endPivot && (*iter).first >= beginPivot) {
+				cnt++;
+				beginPivot = endPivot;
 			}
+			if ((*iter).second > endPivot)
+				isFinished = false;
 		}
+		endPivot++;
 	}
 
-	cout << valueMemo[n][k];
+
+	cout << cnt;
 
 }
