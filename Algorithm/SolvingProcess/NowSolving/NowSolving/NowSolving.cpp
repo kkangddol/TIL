@@ -1,37 +1,23 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-using namespace std;
 
-bool compare(pair<int, int> a, pair<int, int> b) {
-	if (a.second == b.second)
-		return a.first < b.first;
-	else
-		return a.second < b.second;
-}
+using namespace std;
 
 int main() {
 	int n;
-	int cnt = 0;
-	int pivot = 0;
+	int ans = 0;
+	int people[1001];
+
 	cin >> n;
 
-	vector<pair<int, int>> meetings; //first == beginTime, second == endTime;
-	for (int i = 0; i < n; i++) {
-		int beginTemp, endTemp;
-		cin >> beginTemp >> endTemp;
-		meetings.push_back(make_pair(beginTemp, endTemp));
-	}
+	for (int i = 0; i < n; i++)
+		cin >> people[i];
 
-	sort(meetings.begin(), meetings.end(), compare);
+	sort(people, people + n);
 
-	vector<pair<int, int>>::iterator iter;
-	for (iter = meetings.begin(); iter != meetings.end(); iter++) {
-		if ((*iter).first >= pivot) {
-			cnt++;
-			pivot = (*iter).second;
-		}
-	}
+	int rep = n;
+	for (int i = 0; i < n; i++)
+		ans += people[i] * rep--;
 
-	cout << cnt;
-}	
+	cout << ans;
+}
