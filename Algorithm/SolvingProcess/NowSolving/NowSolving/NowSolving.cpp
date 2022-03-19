@@ -1,46 +1,17 @@
 #include <iostream>
-#include <vector>
+
 using namespace std;
 
 int main() {
-	string inputStr;
+	int n;
+	int distances[100000];
+	int gasPrice[100000];
 
-	cin >> inputStr;
+	cin >> n;
+	for (int i = 0; i < n-1; i++)
+		cin >> distances[i];
+	for (int i = 0; i < n; i++)
+		cin >> gasPrice[i];
 
-	int plusNumber = 0;
-	int minusNumber = 0;
-	bool isMinus = false;
 
-	int temp = 0;
-	for (int i = 0; i < inputStr.length(); i++) {
-		if (isMinus) {
-			if (inputStr[i] >= '0' && inputStr[i] <= '9') {
-				temp = temp * 10 + (inputStr[i] - '0');
-			}
-			else if (inputStr[i] == '+' || inputStr[i] == '-') {
-				minusNumber += temp;
-				temp = 0;
-			}
-		}
-		else {
-			if (inputStr[i] >= '0' && inputStr[i] <= '9') {
-				temp = temp * 10 + (inputStr[i] - '0');
-			}
-			else if (inputStr[i] == '+') {
-				plusNumber += temp;
-				temp = 0;
-			}
-			else if (inputStr[i] == '-') {
-				plusNumber += temp;
-				temp = 0;
-				isMinus = true;
-			}
-		}
-	}
-	if (isMinus)
-		minusNumber += temp;
-	else
-		plusNumber += temp;
-
-	cout << plusNumber - minusNumber;
 }
