@@ -3,31 +3,23 @@
 using namespace std;
 
 int main() {
-	int n;
-	int distances[1000] = {0,};
-	int gasPrice[1000] = {0,};
+	bool isEnd = false;
+	while (!isEnd) {
+		int num1 = 0, num2 = 0;
+		cin >> num1 >> num2;
 
-	cin >> n;
-	for (int i = 0; i < n-1; i++)
-		cin >> distances[i];
-	for (int i = 0; i < n; i++)
-		cin >> gasPrice[i];
-
-	int ans = 0;
-	int distance = 0;
-	int minPrice = 1000000001;
-
-	for (int i = 0; i < n - 1; i++) {
-		if (minPrice <= gasPrice[i]) {
-			distance += distances[i];
+		if (num1 == 0 && num2 == 0) {
+			isEnd = true;
+			break;
 		}
-		else {
-			ans += minPrice * distance;
-			minPrice = gasPrice[i];
-			distance = distances[i];
-		}
+
+		if (num1 == 0 || num2 == 0)
+			cout << "neither";
+		else if (num2 % num1 == 0)
+			cout << "factor";
+		else if (num1 % num2 == 0)
+			cout << "multiple";
+		else
+			cout << "neither";
 	}
-	ans += minPrice * distance;
-
-	cout << ans;
 }
