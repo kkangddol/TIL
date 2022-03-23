@@ -17,6 +17,20 @@
 
 
 # 알고리즘
+## DP
+### LIS(Longest Increasing Subsequence 가장 긴 증가하는 부분수열)
+### LCS(Longest Common Subsequence 최장 공통 부분 수열)
+### 연속합
+### 냅색
+
+## 그리디
+
+## 정수론,조합론
+### 유클리드 호제법(GCD 구하는 방법)
+> GCD(A, B) = GCD(B, A % B)   
+> if A % B = 0 -> GCD = B   
+> else GCD(B, A % B)
+
 ## 플로이드 와샬(Floyd Warshall)
 [[출처]](https://blog.naver.com/ndb796/221234427842)
 
@@ -24,15 +38,14 @@
 
 ## 크루스칼, 유니온파인드
 
-## DP
-### LIS
-### LCS
-### 연속합
-### 냅색
 
 
 
-------------
+
+
+
+
+------------------
 # C++
 ## C++ 빠른 입출력
 아래 얘기는 cin, cout을 쓸 때의 얘기지, scanf/prinf로 입출력을 하고자 하신다면 그냥 쓰시면 됩니다. scanf/printf는 충분히 빠릅니다.   
