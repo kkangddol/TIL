@@ -1,20 +1,35 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 int main() {
-	while (1) {
-		int num1 = 0, num2 = 0;
-		cin >> num1 >> num2;
+	int a, b;
+	vector<int> primes;
 
-		if (num1 == 0 && num2 == 0)
+	cin >> a >> b;
+
+	int prime = 2;
+	while (1) {
+		if (prime > a || prime > b)
 			break;
 
-		if (num2 % num1 == 0)
-			cout << "factor" << endl;
-		else if (num1 % num2 == 0)
-			cout << "multiple" << endl;
+		if (a % prime == 0 && b % prime == 0) {
+			a /= prime;
+			b /= prime;
+			primes.push_back(prime);
+			prime = 2;
+		}
 		else
-			cout << "neither" << endl;
+			prime++;
 	}
+	int GCD = 1;
+	int LCM = 1;
+
+	vector<int>::iterator iter;
+	for (iter = primes.begin(); iter != primes.end(); iter++)
+		GCD *= (*iter);
+
+	LCM = GCD * a * b;
+
+	cout << GCD << endl << LCM;
 }
