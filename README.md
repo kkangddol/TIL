@@ -14,4 +14,6 @@
 ### 22/04/13 (Wed)
 > SOLID   
 > 클래스 설계   
+> inheritance vs composition   
 > 랜덤다이스 카피 다시 시작   
+> GameManager   
