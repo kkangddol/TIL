@@ -12,8 +12,15 @@
 > Calling Convention (함수 호출 규약)
 
 ### 22/04/13 (Wed)
-> SOLID   
+> #### SOLID   
 > 클래스 설계   
 > inheritance vs composition   
 > 랜덤다이스 카피 다시 시작   
 > GameManager   
+
+### 22/04/18 (Mon)
+> #### 날개 게임 프로토타입 제작 시작   
+> #### Floating Joystick   
+> > IDragHandler, IPointerDownHandler, IPointerUpHandler   
+> > OnDrag(PointerEventData eventdata), OnPointerDown(PointerEventData eventdata), OnPointerDown((PointerEventData eventdata)   
+> > get 키워드   
