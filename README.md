@@ -23,4 +23,5 @@ Today I Learned
 ### [Floating Joystick](https://github.com/knemo333/TIL/tree/master/Unity#floating-joystick)  
 > IDragHandler, IPointerDownHandler, IPointerUpHandler   
 > OnDrag(PointerEventData eventData), OnPointerDown(PointerEventData eventData), OnPointerDown((PointerEventData eventData)   
-### [get 키워드](https://github.com/knemo333/TIL/blob/master/C%23/README.md#get-set-%ED%82%A4%EC%9B%8C%EB%93%9C)
+### [get, set 키워드](https://github.com/knemo333/TIL/blob/master/C%23/README.md#get-set-%ED%82%A4%EC%9B%8C%EB%93%9C)
+> ```cs public float Vertical {get{return input.y;}}```
