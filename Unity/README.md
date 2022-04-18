@@ -9,7 +9,7 @@
 > OnPointerDown(PointerEventData eventData) 콜백을 받고 싶을 때 구현해야 하는 **인터페이스**입니다.   
 > OnPointerUp(PointerEventData eventData) 콜백을 받고 싶을 때 구현해야 하는 **인터페이스**입니다.   
 
-# get,set 키워드
+# get, set 키워드
 > C++ 에서 private 멤버 변수에 접근하기 위해 아래 소스처럼 접근자를 만들어 사용했다.   
 > ```cpp
 > class CppStyle
