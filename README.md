@@ -22,5 +22,5 @@
 > #### 날개 게임 프로토타입 제작 시작   
 > #### [Floating Joystick](https://github.com/knemo333/TIL/tree/master/Unity)  
 > > IDragHandler, IPointerDownHandler, IPointerUpHandler   
-> > OnDrag(PointerEventData eventdata), OnPointerDown(PointerEventData eventdata), OnPointerDown((PointerEventData eventdata)   
+> > OnDrag(PointerEventData eventData), OnPointerDown(PointerEventData eventData), OnPointerDown((PointerEventData eventData)   
 > > get 키워드   
