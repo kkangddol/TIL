@@ -52,3 +52,19 @@
 > }
 > ```   
 > 위의 경우에서는 data를 읽을 수는 있지만 변경은 불가능 하다.
+
+22/04/19(Tues)
+---
+# 추적
+## NavMeshAgent
+
+# 특정Transform.Find("오브젝트 이름");
+> GameObject.Find는 전체를 탐색   
+> **특정Transform.Find** 는 특정Transform 자식 오브젝트 중에서 탐색   
+> ```cs
+> public Transform firePos;
+> void Start()
+> {
+>   fireLight = firePos.Find("PointLight").GetComponent<Light>(); // firePos의 자식 오브젝트 중에서 탐색
+> }
+> ```
