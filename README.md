@@ -47,3 +47,4 @@ Today I Learned
 >   fireLight = firePos.Find("PointLight").GetComponent<Light>(); // firePos의 자식 오브젝트 중에서 탐색
 > }
 > ```
+소현우
