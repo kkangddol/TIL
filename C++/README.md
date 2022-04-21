@@ -126,6 +126,8 @@ quick sort(퀵 정렬)을 기반으로 함수가 구현되어있어, 평균 시�
 * `sort(v.begin(), v.end(), greater<자료형>());`\t//내림차순 (Descending order)
 * `sort(v.begin(), v.end(), less<자료형>());`\t//오름차순 (default = Ascending order)
 
+`greater<자료형>()` 과 `less<자료형>()` 은 \<functional\> 헤더파일에서 구조체로 구현되어있다.
+
 
 [[출처]](https://blockdmask.tistory.com/178)
 
@@ -280,6 +282,7 @@ https://codecollector.tistory.com/688
 
 ## vector
 ### unique() 중복제거
+중복제거 하기 전에 정렬을 해야 한 다 ?
 ### 특정 원소 지우기
 벡터이름.erase(remove(벡터이름.begin(), 벡터이름.end(), 지우고 싶은 원소), v.end());
 
