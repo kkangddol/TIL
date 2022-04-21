@@ -68,3 +68,20 @@
 >   fireLight = firePos.Find("PointLight").GetComponent<Light>(); // firePos의 자식 오브젝트 중에서 탐색
 > }
 > ```
+   
+22/04/20(Wed)
+---
+## Instantiate 세가지 방법
+> GameObject 반환, Component 반환, 제너릭 반환   
+> 각각 방법에 따른 transform 값 전달 방법의 차이   
+> 각각 방법에 따른 투사체 이동방향 차이 (Vector3.forward vs transform.forward // AddForce() vs AddRelativeForce())
+
+   
+22/04/21(Thu)
+---
+## 투사체와 피사체 간 관계
+> 누가 누구를 알고 몰라야 하는지, 주도적으로 호출하게 될 지 고민   
+> 투사체가 피사체를 GetComponent 하는것이 그 관점에 부합   
+> 투사체에 트리거로 들어온 객체에 Health 상속받은 컴포넌트 유무로도 피격가능여부 판별하기도 함   
+
+## 컴포넌트 패턴
