@@ -68,7 +68,8 @@
 >   fireLight = firePos.Find("PointLight").GetComponent<Light>(); // firePos의 자식 오브젝트 중에서 탐색
 > }
 > ```
-   
+
+
 22/04/20(Wed)
 ---
 ## Instantiate 세가지 방법
@@ -76,7 +77,7 @@
 > 각각 방법에 따른 transform 값 전달 방법의 차이   
 > 각각 방법에 따른 투사체 이동방향 차이 (Vector3.forward vs transform.forward // AddForce() vs AddRelativeForce())
 
-   
+
 22/04/21(Thu)
 ---
 ## 투사체와 피사체 간 관계
@@ -92,10 +93,16 @@
 ## Scene 관리
 > 계속 바뀌지 않아도 되는 오브젝트들은 따로 씬을 두고 스테이지 씬을 중첩하는 방식   
 > Additive로 다중 씬 추가   
-> 
-   
+
+
 ## Math 와 Mathf 차이점
 ## LoadingScene, LoadingUI, LoadSceneAsync
 ## 이벤트에 콜백함수 붙이기
 ## Ctrl + . 로 메소드 구현부 자동생성
 ## Time.unscaledDeltaTime 및 scale에 관해
+## Rigidbody 물체 이동방법의 차이. transform vs rigidbody
+> https://ajh322.tistory.com/273   
+> https://cajava.tistory.com/3   
+> https://sensol2.tistory.com/10   
+> https://blog.naver.com/sabotduke/220802330662   
+> https://themestock7.tistory.com/56   
