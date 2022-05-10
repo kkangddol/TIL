@@ -98,3 +98,4 @@
 ## LoadingScene, LoadingUI, LoadSceneAsync
 ## 이벤트에 콜백함수 붙이기
 ## Ctrl + . 로 메소드 구현부 자동생성
+## Time.unscaledDeltaTime 및 scale에 관해
