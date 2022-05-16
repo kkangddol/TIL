@@ -70,6 +70,7 @@
 > ```
 
 
+
 22/04/20(Wed)
 ---
 ## Instantiate 세가지 방법
@@ -106,3 +107,10 @@
 > https://sensol2.tistory.com/10   
 > https://blog.naver.com/sabotduke/220802330662   
 > https://themestock7.tistory.com/56   
+
+  
+22/05/16(Mon)
+---
+## delegate, lambda
+## Linq
+## virtual abstract interface
