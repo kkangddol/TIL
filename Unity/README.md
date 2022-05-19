@@ -50,7 +50,7 @@
 >       private set;
 >   }
 > }
-> ```   
+> ```
 > 위의 경우에서는 data를 읽을 수는 있지만 변경은 불가능 하다.
 
 22/04/19(Tues)
@@ -65,11 +65,9 @@
 > public Transform firePos;
 > void Start()
 > {
->   fireLight = firePos.Find("PointLight").GetComponent<Light>(); // firePos의 자식 오브젝트 중에서 탐색
+>   fireLight = firePos.Find("PointLight").GetComponent\<Light>(); //firePos의 자식 오브젝트 중에서 탐색
 > }
 > ```
-
-
 
 22/04/20(Wed)
 ---
@@ -114,3 +112,9 @@
 ## delegate, lambda
 ## Linq
 ## virtual abstract interface
+
+
+22/05/19(Thur)
+---
+## 컴포넌트 패턴
+## 스크립터블 오브젝트
